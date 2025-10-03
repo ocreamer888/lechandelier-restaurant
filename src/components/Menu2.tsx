@@ -44,7 +44,7 @@ function SectionOrnament({ text }: { text: string }) {
     <div className="my-8 flex items-center justify-center font-script gap-4">
       <span className="h-px w-16 bg-white/15" />
       <span className="h-[3px] w-[3px] rounded-full bg-white/25" />
-      <h2 className="text-center text-6xl">{text}</h2>
+      <h2 className="text-center text-white text-6xl">{text}</h2>
       <span className="h-[3px] w-[3px] rounded-full bg-white/25" />
       <span className="h-px w-16 bg-white/15" />
     </div>
@@ -53,7 +53,7 @@ function SectionOrnament({ text }: { text: string }) {
 
 function TagDot({ kind }: { kind: "spicy" | "vegan" }) {
   return (
-    <span className="ml-2 inline-flex items-center rounded-full border border-white/20 px-2 py-[1px] text-[10px] uppercase tracking-wider text-white/70">
+    <span className="ml-2 inline-flex items-center rounded-full border border-yellow-100/40 px-2 py-[1px] text-[10px] uppercase tracking-wider text-yellow-100/70">
       {kind}
     </span>
   );
@@ -73,8 +73,8 @@ export default function Menu2() {
               onClick={() => setActive(c)}
               className={`rounded-full border px-4 py-2 text-sm transition ${
                 active === c
-                  ? "border-white/30 bg-white/10 text-white"
-                  : "border-white/10 bg-white/[0.03] text-white/80 hover:bg-white/[0.06]"
+                  ? "border-white/20 bg-pink-200/40 text-white"
+                  : "border-white/10 bg-pink-200/10 text-white/80 hover:bg-pink-200/20"
               }`}
               aria-pressed={active === c}
             >
@@ -100,7 +100,7 @@ export default function Menu2() {
                   {it.tags?.map((t) => (
                     <TagDot key={t} kind={t} />
                   ))}
-                  <span className="mx-3 hidden flex-1 border-b border-dotted border-white/20 md:block" />
+                  <span className="mx-3 hidden flex-1 border-b border-dotted border-pink-200/40 md:block" />
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-white/60">{it.description}</p>
               </div>
