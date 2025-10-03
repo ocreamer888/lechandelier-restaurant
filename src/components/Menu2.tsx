@@ -44,7 +44,7 @@ function SectionOrnament({ text }: { text: string }) {
     <div className="my-8 flex items-center justify-center font-script gap-4">
       <span className="h-px w-16 bg-white/15" />
       <span className="h-[3px] w-[3px] rounded-full bg-white/25" />
-      <h2 className="text-center text-6xl font-semibold tracking-tight">{text}</h2>
+      <h2 className="text-center text-6xl">{text}</h2>
       <span className="h-[3px] w-[3px] rounded-full bg-white/25" />
       <span className="h-px w-16 bg-white/15" />
     </div>

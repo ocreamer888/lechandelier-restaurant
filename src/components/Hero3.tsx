@@ -18,7 +18,7 @@ function Card({
       <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
       <div className="absolute bottom-0 right-0 flex items-center gap-2">
-        <span className="flex flex-row rounded-tl-3xl rounded-br-xl bg-black justify-center items-center px-8 py-4 text-md font-semibold tracking-tight text-white/90 backdrop-blur-sm">
+        <span className="flex flex-row rounded-tl-3xl rounded-br-xl bg-black justify-center items-center px-8 py-4 text-md text-white/90 backdrop-blur-sm">
           {label}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5 12h12M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -46,7 +46,7 @@ export default function Hero3() {
           <NavBar2 />
          <div className="absolute inset-0 bg-black/20" />
           <div className="relative flex flex-col w-full h-full items-center justify-center lg:items-start lg:justify-end p-6 md:p-10">
-            <h1 className="pointer-events-none font-script tracking-tight max-w-[16ch] text-center lg:text-left font-extrabold [text-wrap:balance] text-8xl">
+            <h1 className="pointer-events-none font-script max-w-[16ch] text-center lg:text-left [text-wrap:balance] text-8xl">
               Le Chandelier
             </h1>
             <p className="pointer-events-none text-white/90 text-lg tracking-tight">

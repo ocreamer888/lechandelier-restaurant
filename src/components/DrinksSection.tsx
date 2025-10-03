@@ -16,14 +16,14 @@ export default function DrinksSection() {
             <li className="flex justify-between rounded-lg bg-[var(--card)] border border-black/10 px-4 py-3"><span>Barbera d’Asti</span><span>$13/gl · $52/btl</span></li>
           </ul>
 
-          <h3 className="mt-10 text-6xl font-extrabold font-script">Cocktails</h3>
+          <h3 className="mt-10 text-6xl font-script">Cocktails</h3>
           <ul className="mt-4 space-y-2 text-sm">
             <li className="flex justify-between rounded-lg bg-[var(--card)] border border-black/10 px-4 py-3"><span>Negroni</span><span>$13</span></li>
             <li className="flex justify-between rounded-lg bg-[var(--card)] border border-black/10 px-4 py-3"><span>Spritz</span><span>$12</span></li>
             <li className="flex justify-between rounded-lg bg-[var(--card)] border border-black/10 px-4 py-3"><span>Amaretto Sour</span><span>$12</span></li>
           </ul>
 
-          <h3 className="mt-10 text-6xl font-extrabold font-script">Beer</h3>
+          <h3 className="mt-10 text-6xl font-script">Beer</h3>
           <ul className="mt-4 space-y-2 text-sm">
             <li className="flex justify-between rounded-lg bg-[var(--card)] border border-black/10 px-4 py-3"><span>Pilsner</span><span>$7</span></li>
             <li className="flex justify-between rounded-lg bg-[var(--card)] border border-black/10 px-4 py-3"><span>Amber Ale</span><span>$7</span></li>

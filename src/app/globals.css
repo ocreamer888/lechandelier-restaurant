@@ -46,7 +46,7 @@ body {
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl font-extrabold tracking-tight;
+  @apply text-3xl md:text-4xl;
 }
 
 .section-subtitle {
