@@ -65,7 +65,7 @@ export default function Menu2() {
 
   return (
     <section className="bg-gradient-to-b from-transparent via-black/20 to-transparent py-16 md:py-24 text-white" id="menu">
-      <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-5xl px-4 lg:px-8">
         <div className="mb-6 flex flex-wrap items-center justify-center gap-2">
           {(["Maki", "Uramaki", "Special Rolls"] as Category[]).map((c) => (
             <button

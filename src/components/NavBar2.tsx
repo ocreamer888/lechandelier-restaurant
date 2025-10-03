@@ -12,8 +12,8 @@ export default function NavBar2() {
   return (
     <header className={`relative lg:absolute rounded-full z-50 transition-all backdrop-blur bg-black/20 border-b border-black/10 m-4`}>
       <div className="container">
-        <div className="grid grid-cols-3 items-center py-2">
-          <div className="flex items-center justify-center gap-3 py-2 rounded-full bg-black/40">
+        <div className="grid grid-cols-2 md:grid-cols-3 items-center py-2">
+          <div className="hidden md:flex items-center justify-center gap-3 py-2 rounded-full bg-black/40">
             <nav className="items-center gap-4 text-sm">
               {links.map((l) => (
                 <a

@@ -2,7 +2,7 @@ import Image from "next/image";
 import SectionHeading from "./SectionHeading";
 
 const TEAM = [
-  { name: "Johnathan Demario", role: "Founder" },
+  { name: "Claudio Dubuis", role: "Founder" },
   { name: "Bryan Machado", role: "Chef" },
   { name: "Adam Joseph", role: "Chef" },
   { name: "Putin Docque", role: "Chef" },

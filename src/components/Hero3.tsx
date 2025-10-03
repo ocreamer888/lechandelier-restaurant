@@ -33,9 +33,9 @@ function Card({
 export default function Hero3() {
   return (
     <section className="relative h-auto">
-      <div className="grid h-auto lg:h-screen grid-cols-1 gap-4 p-4 lg:grid-cols-[1fr_420px]">
+      <div className="grid h-auto lg:h-screen grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_420px]">
         {/* Left: main hero image */}
-        <div className="relative h-[100vh] lg:h-full rounded-3xl overflow-hidden">
+        <div className="relative h-[96vh] lg:h-full rounded-3xl overflow-hidden">
           <Image
             src="/filler-image-1.png"
             alt="Signature dish plated"
