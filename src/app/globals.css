@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #d7dccf; /* soft sage, similar to Figma */
+  --foreground: #1e1f1c;
+  --muted: #e6e9e0;
+  --card: #f3f5ef;
+  --accent: #a5b199;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-bodoni);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #080a08;
+    --foreground: #e7e9e5;
+    --muted: #1b201a;
+    --card: #151915;
+    --accent: #7f8b78;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-bodoni), serif;
+}
+
+.font-script {
+  font-family: var(--font-luxurious), cursive;
+}
+
+.section {
+  @apply py-16 md:py-24;
+}
+
+.container {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl font-extrabold tracking-tight;
+}
+
+.section-subtitle {
+  @apply mt-3 max-w-2xl text-sm md:text-base text-black/60;
+}
+
+.pill {
+  @apply rounded-full border border-black/10 bg-white/60 px-4 py-2 text-sm backdrop-blur hover:bg-white transition;
+}
+.glass-dark {
+  @apply border border-white/15 bg-black/40 text-white backdrop-blur;
+}
+.glass-light {
+  @apply border border-black/10 bg-white/70 text-black backdrop-blur;
 }
