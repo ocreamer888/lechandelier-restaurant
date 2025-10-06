@@ -15,6 +15,7 @@
   --color-card: var(--card);
   --color-accent: var(--accent);
   --font-sans: var(--font-bodoni);
+  --font-poppins: var(--font-poppins);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -61,4 +62,33 @@ body {
 }
 .glass-light {
   @apply border border-black/10 bg-white/70 text-black backdrop-blur;
+}
+
+.neumorphic-button {
+  width: 180px;            /* adjust as needed */
+  height: 38px;
+  background: #fcdada2a;
+  backdrop-filter: blur(8px);
+  border: none;
+  border-radius: 90px;     /* rounded square like the mock */
+  color: rgba(255, 232, 232, 0.8); /* subtle label */
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.25s ease;
+
+  display: inline-flex;           /* center text horizontally/vertically */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* Inner shadows from the spec */
+  box-shadow:
+    inset -1px -1px 10px rgba(255, 221, 221, 0.5),
+    inset  3px  3px 10px rgba(23, 23, 23, 0.4);
+}
+.neumorphic-button-pressed,
+.neumorphic-button:active {
+  transform: scale(0.985);
+  box-shadow:
+    inset -2px -2px 8px rgba(250, 206, 206, 0.55),
+    inset  2px  2px 8px rgba(255, 195, 195, 0.22);
 }

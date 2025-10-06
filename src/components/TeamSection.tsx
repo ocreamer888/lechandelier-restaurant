@@ -2,10 +2,9 @@ import Image from "next/image";
 import SectionHeading from "./SectionHeading";
 
 const TEAM = [
-  { name: "Claudio Dubuis", role: "Founder" },
-  { name: "Bryan Machado", role: "Chef" },
-  { name: "Adam Joseph", role: "Chef" },
-  { name: "Putin Docque", role: "Chef" },
+  { name: "Claudio Dubuis", role: "Founder", image: "/Javi-Le-Chandelier-Chef-1.png" },
+  { name: "Kenneth", role: "Chef", image: "/Javi-Le-Chandelier-Chef-1.png" },
+  { name: "Kevin Araya", role: "Chef", image: "/Javi-Le-Chandelier-Chef-1.png" },
 ];
 
 export default function TeamSection() {
@@ -17,7 +16,7 @@ export default function TeamSection() {
           {TEAM.map((m) => (
             <article key={m.name} className="rounded-xl overflow-hidden border border-black/10 bg-white/10">
               <div className="relative aspect-[4/3]">
-                <Image src="/restaurante-le-chandelier-2.webp" alt={m.name} fill className="object-cover" />
+                <Image src={m.image} alt={m.name} fill className="object-cover" />
               </div>
               <div className="p-4">
                 <h3 className="font-semibold">{m.name}</h3>

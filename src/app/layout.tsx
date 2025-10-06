@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bodoni_Moda, Luxurious_Script } from "next/font/google";
+import { Bodoni_Moda, Luxurious_Script, Poppins } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 
@@ -17,6 +17,13 @@ const luxurious = Luxurious_Script({
   style: ["normal"],
 });
 
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal"],
+});
+
 export const metadata: Metadata = {
   title: "Le Chandelier — French-Swiss Restaurant",
   description: "French-Swiss restaurant. Book a table, explore our menu, meet the team, and see events.",
@@ -29,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${bodoni.variable} ${luxurious.variable} antialiased font-pretty`}>
+      <body className={`${bodoni.variable} ${luxurious.variable} ${poppins.variable} antialiased font-pretty`}>
         {children}
         <Footer />
       </body>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import NavBar2 from "./NavBar2";
+import NavBar2 from "../NavBar2";
 
 function Card({
   href,
@@ -47,7 +47,7 @@ export default function Hero3() {
          <div className="absolute inset-0 bg-black/20" />
           <div className="relative flex flex-col w-full h-full items-center justify-center lg:items-start lg:justify-end p-6 md:p-10">
             <h1 className="pointer-events-none font-script max-w-[16ch] text-center lg:text-left [text-wrap:balance] text-8xl">
-              Le Chandelier
+              Menu
             </h1>
             <p className="pointer-events-none text-white/90 text-lg tracking-tight">
             French-Swiss cuisine in the heart of Costa Rica.
@@ -57,14 +57,19 @@ export default function Hero3() {
         </div>
 
         {/* Right: stacked cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           <div className="relative h-[28vh] min-h-[180px] lg:h-auto">
-            <Card href="/menu" label="MENU" src="/restaurante-le-chandelier-2.webp" alt="Explore our menu" />
+            <Card href="#menu" label="Entradas" src="/restaurante-le-chandelier-2.webp" alt="Explore our menu" />
           </div>
           <div className="relative h-[24vh] min-h-[160px] lg:h-auto">
-            <Card href="#reservation" label="RESERVATION" src="/filler-image-2.png" alt="Book a table" />
+            <Card href="#reservation" label="Platos Fuertes" src="/filler-image-2.png" alt="Book a table" />
           </div>
-         
+          <div className="relative h-[24vh] min-h-[160px] lg:h-auto">
+            <Card href="#about" label="Postres" src="/restaurante-le-chandelier-2.webp" alt="About our restaurant" />
+          </div>
+          <div className="relative h-[24vh] min-h-[160px] lg:h-auto">
+            <Card href="#about" label="Bebidas" src="/restaurante-le-chandelier-2.webp" alt="About our restaurant" />
+          </div>
         </div>
       </div>
     </section>

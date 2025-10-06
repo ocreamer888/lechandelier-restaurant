@@ -18,7 +18,7 @@ function Card({
       <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
       <div className="absolute bottom-0 right-0 flex items-center gap-2">
-        <span className="flex flex-row rounded-tl-3xl rounded-br-xl bg-black justify-center items-center px-8 py-4 text-lg font-semibold tracking-tight text-white/90 backdrop-blur-sm">
+        <span className="flex flex-row rounded-tl-3xl rounded-br-xl bg-black/50 justify-center items-center px-8 py-4 text-lg font-semibold tracking-tight text-white/90 backdrop-blur">
           {label}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5 12h12M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
