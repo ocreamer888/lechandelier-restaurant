@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bodoni_Moda, Luxurious_Script, Poppins } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 const bodoni = Bodoni_Moda({
   variable: "--font-bodoni",
@@ -37,6 +38,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${bodoni.variable} ${luxurious.variable} ${poppins.variable} antialiased font-pretty`}>
+      <div className="absolute inset-0 -z-10 fixed">
+      <Image
+            src="/Le-Chandelier-BG.png"
+            alt="Signature dish plated"
+            fill
+            priority
+            className="relative object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+          </div>
         {children}
         <Footer />
       </body>

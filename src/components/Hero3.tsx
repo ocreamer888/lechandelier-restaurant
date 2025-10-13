@@ -62,7 +62,7 @@ export default function Hero3() {
             <Card href="/menu" label="MENU" src="/restaurante-le-chandelier-2.webp" alt="Explore our menu" />
           </div>
           <div className="relative h-[24vh] min-h-[160px] lg:h-auto">
-            <Card href="#reservation" label="RESERVATION" src="/filler-image-2.png" alt="Book a table" />
+            <Card href="/reservation" label="RESERVATION" src="/filler-image-2.png" alt="Book a table" />
           </div>
          
         </div>

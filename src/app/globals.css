@@ -92,3 +92,13 @@ body {
     inset -2px -2px 8px rgba(250, 206, 206, 0.55),
     inset  2px  2px 8px rgba(255, 195, 195, 0.22);
 }
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

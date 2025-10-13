@@ -32,8 +32,8 @@ export default function DrinksSection() {
         </div>
 
         <div className="grid gap-4">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-            <Image src="/restaurante-le-chandelier-2.webp" alt="Bar and cocktails" fill className="object-cover" />
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10">
+            <Image src="/sangria-le-chandelier-4.png" alt="Bar and cocktails" fill className="object-cover transition-transform duration-500 hover:scale-[1.03]" />
           </div>
           <article className="rounded-3xl bg-gradient-to-br from-pink-200/60 to-pink-200/40 p-6">
             <h4 className="text-5xl font-script">Midnight Cross</h4>

@@ -1,9 +1,7 @@
 "use client";
-
-import Image from "next/image";
 import { useMemo, useState } from "react";
 
-type Category = "Maki" | "Uramaki" | "Special Rolls";
+type Category = "Entradas" | "Platos Fuertes" ;
 
 type Item = {
   id: string;
@@ -15,28 +13,20 @@ type Item = {
 };
 
 const DATA: Record<Category, Item[]> = {
-  Maki: [
-    { id: "m1", name: "Spicy Tuna Maki", price: "$5", description: "Spicy tuna, cucumber, avocado, rolled in nori and seasoned rice.", image: "/restaurante-le-chandelier-2.webp", tags: ["spicy"] },
-    { id: "m2", name: "Mango Maki", price: "$5", description: "Tempura shrimp, cucumber, cream cheese, core of fresh avocado.", image: "/restaurante-le-chandelier-2.webp" },
-    { id: "m3", name: "Salmon Maki", price: "$5", description: "Shiitake, avocado, pickled daikon, sesame seeds.", image: "/restaurante-le-chandelier-2.webp" },
-    { id: "m4", name: "Tuna Maki", price: "$5", description: "Julienned carrots, bell peppers, cucumber in a nori-wrapped roll.", image: "/restaurante-le-chandelier-2.webp" },
+  Entradas: [
+    { id: "e1", name: "Ensalada César", price: "$12", description: "Lechuga romana, crutones artesanales, queso parmesano, aderezo César clásico.", image: "/restaurante-le-chandelier-2.webp" },
+    { id: "e2", name: "Carpaccio de Res", price: "$16", description: "Finas láminas de res, rúcula fresca, alcaparras, queso parmesano, aceite de trufa.", image: "/restaurante-le-chandelier-2.webp" },
+    { id: "e3", name: "Ceviche Peruano", price: "$14", description: "Pescado fresco marinado en limón, cilantro, cebolla morada, camote y maíz tostado.", image: "/restaurante-le-chandelier-2.webp", tags: ["spicy"] },
+    { id: "e4", name: "Tabla de Quesos", price: "$18", description: "Selección de quesos artesanales, mermelada de higos, nueces caramelizadas.", image: "/restaurante-le-chandelier-2.webp" },
+    { id: "e5", name: "Bruschetta Italiana", price: "$10", description: "Pan artesanal tostado, tomate fresco, albahaca, ajo, aceite de oliva extra virgen.", image: "/restaurante-le-chandelier-2.webp", tags: ["vegan"] },
   ],
-  Uramaki: [
-    { id: "u1", name: "Volcano Delight", price: "$12", description: "Crab salad, avocado, cucumber, topped with spicy tuna and sriracha.", image: "/restaurante-le-chandelier-3.webp", tags: ["spicy"] },
-    { id: "u2", name: "Rainbow Fusion", price: "$12", description: "Fresh tuna, salmon, yellowtail, avocado, with cucumber and crab.", image: "/restaurante-le-chandelier-3.webp" },
-    { id: "u3", name: "Dragon Elegance", price: "$12", description: "Grilled eel and avocado, draped with ripe avocado slices.", image: "/restaurante-le-chandelier-3.webp" },
-    { id: "u4", name: "Sunset Serenity", price: "$12", description: "Tempura shrimp, cucumber, spicy mayo, soy paper.", image: "/restaurante-le-chandelier-3.webp" },
-    { id: "u5", name: "Mystic Garden", price: "$12", description: "Shiitake, asparagus, cucumber, sesame seeds.", image: "/restaurante-le-chandelier-3.webp" },
-    { id: "u6", name: "Ocean Breeze", price: "$12", description: "Shrimp, crab stick, avocado, yuzu-infused tobiko.", image: "/restaurante-le-chandelier-3.webp" },
-    { id: "u7", name: "Tokyo Blossom", price: "$12", description: "Tuna, crab stick, cucumber in pink soy paper, flower petals.", image: "/restaurante-le-chandelier-3.webp" },
-  ],
-  "Special Rolls": [
-    { id: "s1", name: "Sunrise Bliss", price: "$16", description: "Salmon, cream cheese, asparagus, orange-hued tobiko.", image: "/filler-image-1.png", tags: ["spicy"] },
-    { id: "s2", name: "Mango Tango Fusion", price: "$16", description: "Tempura shrimp, cucumber, avocado, sweet mango, mango sauce.", image: "/filler-image-1.png" },
-    { id: "s3", name: "Truffle Indulgence", price: "$16", description: "Black truffle, wagyu beef, cucumber, microgreens.", image: "/filler-image-1.png" },
-    { id: "s4", name: "Pacific Firecracker", price: "$16", description: "Crab salad, tempura shrimp, jalapeño, chili-infused aioli.", image: "/filler-image-1.png", tags: ["spicy"] },
-    { id: "s5", name: "Eternal Eel Enchantment", price: "$16", description: "Eel tempura, foie gras, cucumber, truffle oil, gold leaf.", image: "/filler-image-1.png" },
-  ],
+  "Platos Fuertes": [
+    { id: "p1", name: "Filet Mignon", price: "$38", description: "Filete de res premium 8oz, puré de papas trufado, espárragos asados, reducción de vino tinto.", image: "/restaurante-le-chandelier-3.webp" },
+    { id: "p3", name: "Pato Confitado", price: "$36", description: "Pierna de pato confitada, puré de manzana, col morada, salsa de naranja y Grand Marnier.", image: "/restaurante-le-chandelier-3.webp" },
+    { id: "p4", name: "Cordero Asado", price: "$42", description: "Rack de cordero con hierbas, couscous marroquí, vegetales rostizados, salsa de menta.", image: "/restaurante-le-chandelier-3.webp" },
+    { id: "p5", name: "Risotto de Hongos", price: "$26", description: "Arroz arborio, selección de hongos silvestres, trufa negra, queso parmesano.", image: "/restaurante-le-chandelier-3.webp", tags: ["vegan"] },
+    { id: "p6", name: "Pasta con Langosta", price: "$45", description: "Linguini fresco, langosta entera, tomate cherry, vino blanco, mantequilla de limón.", image: "/restaurante-le-chandelier-3.webp" },
+  ]
 };
 
 function SectionOrnament({ text }: { text: string }) {
@@ -60,14 +50,14 @@ function TagDot({ kind }: { kind: "spicy" | "vegan" }) {
 }
 
 export default function Menu2() {
-  const [active, setActive] = useState<Category>("Maki");
+  const [active, setActive] = useState<Category>("Entradas");
   const items = useMemo(() => DATA[active] ?? [], [active]);
 
   return (
-    <section className="bg-gradient-to-b from-transparent via-black/20 to-transparent py-16 md:py-24 text-white" id="menu">
+    <section className="bg-gradient-to-b from-transparent via-black/20 to-transparent text-white" id="menu">
       <div className="mx-auto w-full max-w-5xl px-4 lg:px-8">
         <div className="mb-6 flex flex-wrap items-center justify-center gap-2">
-          {(["Maki", "Uramaki", "Special Rolls"] as Category[]).map((c) => (
+          {(["Entradas", "Platos Fuertes"] as Category[]).map((c) => (
             <button
               key={c}
               onClick={() => setActive(c)}
@@ -87,10 +77,8 @@ export default function Menu2() {
 
         <ul className="space-y-8">
           {items.map((it) => (
-            <li key={it.id} className="grid grid-cols-[88px_1fr_auto] items-start gap-5">
-              <div className="relative h-16 w-24 overflow-hidden rounded-md bg-white/5 ring-1 ring-white/10">
-                <Image src={it.image} alt={it.name} fill className="object-cover" />
-              </div>
+            <li key={it.id} className="grid grid-cols-[500px_1fr_auto] items-start gap-5">
+             
 
               <div className="col-span-1">
                 <div className="flex items-baseline">

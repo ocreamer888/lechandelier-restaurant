@@ -12,14 +12,14 @@ export default function AwardsSection() {
 {awards.map((award, index) => (
   <div
     key={index}
-    className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-neutral-900 to-black border border-white/10 p-6 flex flex-col items-center justify-center text-center"
+    className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-pink-100/50 to-pink-200/40 border border-white/20 p-6 flex flex-col items-center justify-center text-center"
   >
     {/* 5 Stars */}
     <div className="flex gap-1 mb-4">
       {[...Array(5)].map((_, i) => (
         <Star
           key={i}
-          className="w-4 h-4 fill-white text-white"
+          className="w-4 h-4 fill-yellow-500 text-yellow-500"
         />
       ))}
     </div>
@@ -30,7 +30,7 @@ export default function AwardsSection() {
     </h3>
     
     {/* Subtitle */}
-    <p className="text-white/50 text-xs tracking-wide mb-1">
+    <p className="text-white/70 text-xs tracking-wide mb-1">
       {award.subtitle}
     </p>
     <p className="text-white/50 text-xs tracking-wide">

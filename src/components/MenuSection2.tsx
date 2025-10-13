@@ -1,15 +1,16 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import Menu2 from "./Menu2";
 
 export default function MenuSection2() {
   return (
     <section className="relative min-h-screen">
-      <div className="grid h-auto min-h-screen grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_600px]">
+      <div className="grid items-start justify-start h-auto grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_600px]">
       
-        <Link href="/menu" className="relative h-[50vh] lg:h-full rounded-3xl overflow-hidden group block" id="menu">
+        <Link href="/menu" className="relative h-[20vh] lg:h-[90vh] max-h-[700px] mb-8 lg:mb-0 rounded-3xl overflow-hidden group block border border-white/10" id="menu">
           <Image
-            src="/filler-image-1.png"
+            src="/sangria-le-chandelier-3.png"
             alt="Signature dish plated"
             fill
             priority
@@ -27,30 +28,7 @@ export default function MenuSection2() {
           </div>
         </Link>
 
-        {/* Right: content sections */}
-        <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
-        <Link href="/menu" className="relative h-[50vh] lg:h-full rounded-3xl overflow-hidden group block" id="menu">
-          <Image
-            src="/filler-image-1.png"
-            alt="Signature dish plated"
-            fill
-            priority
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          />
-         <div className="absolute inset-0 bg-black/20" />
-          
-        </Link>
-        <Link href="/menu" className="relative h-[50vh] lg:h-full rounded-3xl overflow-hidden group block" id="menu">
-          <Image
-            src="/filler-image-1.png"
-            alt="Signature dish plated"
-            fill
-            priority
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          />
-        
-        </Link>
-        </div>
+        <Menu2 />
       </div>
     </section>
   );
