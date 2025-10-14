@@ -303,10 +303,8 @@ export default function Menu3() {
 
         <ul className="space-y-8">
           {items.map((it) => (
-            <li key={it.id} className="grid grid-cols-[88px_1fr_auto] items-start gap-5">
-              <div className="relative h-16 w-24 overflow-hidden rounded-md bg-white/5 ring-1 ring-white/10">
-                <Image src={it.image} alt={it.name} fill className="object-cover" />
-              </div>
+            <li key={it.id} className="grid grid-cols-[400px_1fr_auto] lg:grid-cols-[700px_1fr_auto] items-start gap-5">
+             
 
               <div className="col-span-1">
                 <div className="flex items-baseline">

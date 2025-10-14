@@ -8,7 +8,7 @@ export default function ReservationsPage() {
         <div className="grid items-center justify-center h-auto min-h-screen grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_600px]">
         <div className="relative h-[96vh] lg:h-full rounded-3xl overflow-hidden">
           <Image
-            src="/filler-image-1.png"
+            src="/filler-image-2.png"
             alt="Signature dish plated"
             fill
             priority

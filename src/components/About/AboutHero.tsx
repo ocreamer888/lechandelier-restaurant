@@ -18,7 +18,7 @@ export default function AboutHero() {
         {/* Left: Large "ABOUT" text with vegetables/salt image */}
         <div className="relative h-[96vh] lg:h-auto rounded-3xl overflow-hidden">
           <Image
-            src="/filler-image-1.png"
+            src="/Cocina-Le-Chandelier-3.png"
             alt="Signature dish plated"
             fill
             priority
@@ -56,7 +56,7 @@ export default function AboutHero() {
               <div className="gap-4">
               <div className="relative aspect-square rounded-2xl overflow-hidden">
                   <Image
-                    src="/restaurante-le-chandelier-2.webp"
+                    src="/Cocina-Le-Chandelier-2.webp"
                     alt="Restaurant interior"
                     fill
                     className="object-cover"
@@ -115,7 +115,7 @@ export default function AboutHero() {
             {/* Chef Image */}
             <div className="relative h-[300px] md:h-[200px] w-[200px] rounded-3xl overflow-hidden">
               <Image
-                src="/Javi-Le-Chandelier-Chef-2.png"
+                src="/Cocina-Le-Chandelier-1.webp"
                 alt="Chef at work"
                 fill
                 className="object-cover grayscale"

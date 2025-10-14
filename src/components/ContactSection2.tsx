@@ -21,7 +21,7 @@ export default function ContactSection2() {
         {/* Left: main contact image with overlay */}
         <div className="relative h-[96vh] lg:h-full rounded-3xl overflow-hidden">
           <Image
-            src="/filler-image-1.png"
+            src="/restaurante-le-chandelier-3.webp"
             alt="Signature dish plated"
             fill
             priority

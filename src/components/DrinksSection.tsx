@@ -7,7 +7,7 @@ export default function DrinksSection() {
       <div className="container grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         <div>
           <SectionHeading
-            title="Drinks Menu"
+            title="Drinks"
             subtitle="An exquisite selection of champagnes and fine wines from around the world."
           />
 
@@ -35,7 +35,7 @@ export default function DrinksSection() {
           {/* White Wines */}
           <h3 className="mt-10 text-5xl font-script">White Wines</h3>
           
-          <h4 className="mt-6 text-2xl font-semibold text-pink-900/80">Aromatic</h4>
+          <h4 className="mt-6 text-2xl font-semibold text-pink-200/80">Aromatic</h4>
           <ul className="mt-3 space-y-2 text-lg">
             <li className="flex justify-between rounded-full bg-pink-100/20 border border-black/10 px-4 py-3">
               <span>Casillero del Diablo</span>
@@ -63,7 +63,7 @@ export default function DrinksSection() {
             </li>
           </ul>
 
-          <h4 className="mt-6 text-2xl font-semibold text-pink-900/80">Sweet</h4>
+          <h4 className="mt-6 text-2xl font-semibold text-pink-200/80">Sweet</h4>
           <ul className="mt-3 space-y-2 text-lg">
             <li className="flex justify-between rounded-full bg-pink-100/20 border border-black/10 px-4 py-3">
               <span>Amelia</span>
@@ -75,7 +75,7 @@ export default function DrinksSection() {
             </li>
           </ul>
 
-          <h4 className="mt-6 text-2xl font-semibold text-pink-900/80">Smooth</h4>
+          <h4 className="mt-6 text-2xl font-semibold text-pink-200/80">Smooth</h4>
           <ul className="mt-3 space-y-2 text-lg">
             <li className="flex justify-between rounded-full bg-pink-100/20 border border-black/10 px-4 py-3">
               <span>Beringer White Zinfandel</span>
@@ -98,7 +98,7 @@ export default function DrinksSection() {
           {/* Red Wines */}
           <h3 className="mt-10 text-5xl font-script">Red Wines</h3>
           
-          <h4 className="mt-6 text-2xl font-semibold text-pink-900/80">Smooth</h4>
+          <h4 className="mt-6 text-2xl font-semibold text-pink-200/80">Smooth</h4>
           <ul className="mt-3 space-y-2 text-lg">
             <li className="flex justify-between rounded-full bg-pink-100/20 border border-black/10 px-4 py-3">
               <span>Casillero del Diablo</span>
@@ -118,7 +118,7 @@ export default function DrinksSection() {
             </li>
           </ul>
 
-          <h4 className="mt-6 text-2xl font-semibold text-pink-900/80">Noble</h4>
+          <h4 className="mt-6 text-2xl font-semibold text-pink-200/80">Noble</h4>
           <ul className="mt-3 space-y-2 text-lg">
             <li className="flex justify-between rounded-full bg-pink-100/20 border border-black/10 px-4 py-3">
               <span>Navarro Correas Private Collection</span>
@@ -142,7 +142,7 @@ export default function DrinksSection() {
             </li>
           </ul>
 
-          <h4 className="mt-6 text-2xl font-semibold text-pink-900/80">Merlot</h4>
+          <h4 className="mt-6 text-2xl font-semibold text-pink-200/80">Merlot</h4>
           <ul className="mt-3 space-y-2 text-lg">
             <li className="flex justify-between rounded-full bg-pink-100/20 border border-black/10 px-4 py-3">
               <span>Casillero del Diablo</span>
@@ -158,7 +158,7 @@ export default function DrinksSection() {
             </li>
           </ul>
 
-          <h4 className="mt-6 text-2xl font-semibold text-pink-900/80">Pinot Noir</h4>
+          <h4 className="mt-6 text-2xl font-semibold text-pink-200/80">Pinot Noir</h4>
           <ul className="mt-3 space-y-2 text-lg">
             <li className="flex justify-between rounded-full bg-pink-100/20 border border-black/10 px-4 py-3">
               <span>Louis Jadot Bourgogne</span>
@@ -170,7 +170,7 @@ export default function DrinksSection() {
             </li>
           </ul>
 
-          <h4 className="mt-6 text-2xl font-semibold text-pink-900/80">Oak Aged</h4>
+          <h4 className="mt-6 text-2xl font-semibold text-pink-200/80">Oak Aged</h4>
           <ul className="mt-3 space-y-2 text-lg">
             <li className="flex justify-between rounded-full bg-pink-100/20 border border-black/10 px-4 py-3">
               <span>Viña Mayor Reserva D.O. Ribera del Duero</span>

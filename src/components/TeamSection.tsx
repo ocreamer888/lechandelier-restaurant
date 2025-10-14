@@ -2,7 +2,6 @@ import Image from "next/image";
 import SectionHeading from "./SectionHeading";
 
 const TEAM = [
-  { name: "Clauido Dubuis", role: "Owner", image: "/Andrea-Retrato-Le-Chandelier.webp" },
   { name: "Andrea Dubuis", role: "Owner", image: "/Andrea-Retrato-Le-Chandelier.webp" },
   { name: "Federico Sanchez", role: "Manager", image: "/Fede-Retrato-Le-Chandelier-3.webp" },
   { name: "Kevin Araya", role: "Captain", image: "/Kevin-Retrato-Le-Chandelier-3.webp" },

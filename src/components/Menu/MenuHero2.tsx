@@ -60,16 +60,16 @@ export default function MenuHero2() {
         {/* Right: content sections */}
         <div className="grid grid-cols-2 gap-4">
           <div className="relative h-[28vh] min-h-[180px] lg:h-auto">
-            <Card href="#menu" label="Entradas" src="/restaurante-le-chandelier-2.webp" alt="Explore our menu" />
+            <Card href="#menu" label="Entradas" src="/entrada-le-chandelier-1.png" alt="Explore our menu" />
           </div>
           <div className="relative h-[24vh] min-h-[160px] lg:h-auto">
-            <Card href="#reservation" label="Platos Fuertes" src="/filler-image-2.png" alt="Book a table" />
+            <Card href="#reservation" label="Platos Fuertes" src="/pato-a-la-naranja-le-chandelier-1.png" alt="Book a table" />
           </div>
           <div className="relative h-[24vh] min-h-[160px] lg:h-auto">
-            <Card href="#about" label="Postres" src="/restaurante-le-chandelier-2.webp" alt="About our restaurant" />
+            <Card href="#about" label="Postres" src="/postre-le-chandelier-1.png" alt="About our restaurant" />
           </div>
           <div className="relative h-[24vh] min-h-[160px] lg:h-auto">
-            <Card href="#about" label="Bebidas" src="/restaurante-le-chandelier-2.webp" alt="About our restaurant" />
+            <Card href="#about" label="Bebidas" src="/sangria-le-chandelier-3.png" alt="About our restaurant" />
           </div>
         </div>
       </div>

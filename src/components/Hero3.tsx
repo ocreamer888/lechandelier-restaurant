@@ -37,7 +37,7 @@ export default function Hero3() {
         {/* Left: main hero image */}
         <div className="relative h-[96vh] lg:h-full rounded-3xl overflow-hidden">
           <Image
-            src="/filler-image-1.png"
+            src="/restaurante-le-chandelier-2.webp"
             alt="Signature dish plated"
             fill
             priority
@@ -59,7 +59,7 @@ export default function Hero3() {
         {/* Right: stacked cards */}
         <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
           <div className="relative h-[28vh] min-h-[180px] lg:h-auto">
-            <Card href="/menu" label="MENU" src="/restaurante-le-chandelier-2.webp" alt="Explore our menu" />
+            <Card href="/menu" label="MENU" src="/menu-le-chandelier-1.png" alt="Explore our menu" />
           </div>
           <div className="relative h-[24vh] min-h-[160px] lg:h-auto">
             <Card href="/reservation" label="RESERVATION" src="/filler-image-2.png" alt="Book a table" />
