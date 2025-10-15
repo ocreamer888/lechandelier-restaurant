@@ -77,7 +77,7 @@ export default function Menu2() {
 
         <ul className="space-y-8">
           {items.map((it) => (
-            <li key={it.id} className="grid grid-cols-[500px_1fr_auto] items-start gap-5">
+            <li key={it.id} className="grid grid-cols-[250px_1fr_auto] md:grid-cols-[500px_1fr_auto] items-start gap-5">
              
 
               <div className="col-span-1">

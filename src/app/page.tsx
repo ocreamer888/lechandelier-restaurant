@@ -4,8 +4,8 @@ import TeamSection from "@/components/TeamSection";
 import AwardsSection from "@/components/AwardsSection";
 import MenuSection2 from "@/components/MenuSection2";
 import EventSection3 from "@/components/EventSection3";
-import DrinkSection from "@/components/DrinksSection";
 import ContactSection2 from "@/components/ContactSection2";
+import DrinksSection3 from "@/components/DrinkSection3";
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
       <AwardsSection />
       <WhoWeAre />
       <MenuSection2 />
-      <DrinkSection />
+      <DrinksSection3 />
       <EventSection3 />
       <TeamSection />
       <ContactSection2 />

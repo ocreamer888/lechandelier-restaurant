@@ -58,7 +58,7 @@ export default function MenuHero2() {
         </div>
 
         {/* Right: content sections */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4">
           <div className="relative h-[28vh] min-h-[180px] lg:h-auto">
             <Card href="#menu" label="Entradas" src="/entrada-le-chandelier-1.png" alt="Explore our menu" />
           </div>

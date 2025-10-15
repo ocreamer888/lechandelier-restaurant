@@ -46,10 +46,10 @@ export default function Hero3() {
           <NavBar2 />
          <div className="absolute inset-0 bg-black/20" />
           <div className="relative flex flex-col w-full h-full items-center justify-center lg:items-start lg:justify-end p-6 md:p-10">
-            <h1 className="pointer-events-none font-script max-w-[16ch] text-center lg:text-left [text-wrap:balance] text-8xl">
+            <h1 className="pointer-events-none font-script max-w-[16ch] text-center lg:text-left [text-wrap:balance] lg:text-8xl text-7xl">
               Le Chandelier
             </h1>
-            <p className="pointer-events-none text-white/90 text-lg tracking-tight">
+            <p className="pointer-events-none text-center lg:text-left text-white/90 text-lg tracking-tight">
             French-Swiss cuisine in the heart of Costa Rica.
             </p>
             
@@ -61,7 +61,7 @@ export default function Hero3() {
           <div className="relative h-[28vh] min-h-[180px] lg:h-auto">
             <Card href="/menu" label="MENU" src="/menu-le-chandelier-1.png" alt="Explore our menu" />
           </div>
-          <div className="relative h-[24vh] min-h-[160px] lg:h-auto">
+          <div className="relative h-[28vh] min-h-[180px] lg:h-auto">
             <Card href="/reservation" label="RESERVATION" src="/filler-image-2.png" alt="Book a table" />
           </div>
          

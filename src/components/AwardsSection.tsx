@@ -12,7 +12,7 @@ export default function AwardsSection() {
 {awards.map((award, index) => (
   <div
     key={index}
-    className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-pink-100/50 to-pink-200/40 border border-white/20 p-6 flex flex-col items-center justify-center text-center"
+    className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-pink-100/20 to-pink-200/10 border border-white/20 p-6 flex flex-col items-center justify-center text-center"
   >
     {/* 5 Stars */}
     <div className="flex gap-1 mb-4">

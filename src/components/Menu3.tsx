@@ -301,7 +301,7 @@ export default function Menu3() {
 
         <ul className="space-y-8">
           {items.map((it) => (
-            <li key={it.id} className="grid grid-cols-[400px_1fr_auto] lg:grid-cols-[700px_1fr_auto] items-start gap-5">
+            <li key={it.id} className="grid grid-cols-[250px_1fr_auto] md:grid-cols-[400px_1fr_auto] lg:grid-cols-[700px_1fr_auto] items-start gap-5">
              
 
               <div className="col-span-1">
