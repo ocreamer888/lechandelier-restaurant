@@ -138,17 +138,17 @@ export default function ContactSection2() {
               <div className="items-center justify-between w-full flex flex-row">
                 <p className="text-xs text-white/60 tracking-wider mb-1">PHONE</p>
                 <a
-                  href="tel:+4912345678900"
+                  href="tel:+50671300911"
                   className="text-base md:text-lg hover:text-white transition-colors"
                 >
-                  +506 8888 8888
+                  +506 7130 0911
                 </a>
               </div>
               
               <div className="items-center justify-between w-full flex flex-row">
                 <p className="text-xs text-white/60 tracking-wider mb-1">EMAIL</p>
                 <a
-                  href="mailto:email@example.com"
+                  href="mailto:hello@lechandelier.restaurant"
                   className="text-base md:text-lg hover:text-white transition-colors"
                 >
                   hello@lechandelier.restaurant
