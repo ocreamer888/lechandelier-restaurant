@@ -143,7 +143,7 @@ export default function ContactSection() {
                   href="tel:+4912345678900"
                   className="text-base md:text-lg hover:text-white transition-colors"
                 >
-                  +506 8888 8888
+                  +506 7130 0911
                 </a>
               </div>
               
