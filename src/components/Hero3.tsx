@@ -37,7 +37,7 @@ export default function Hero3() {
         {/* Left: main hero image */}
         <div className="relative h-[96vh] lg:h-full rounded-3xl overflow-hidden">
           <Image
-            src="/filler-image-1.png"
+            src="/stroganoff-le-chandelier-1.png"
             alt="Signature dish plated"
             fill
             priority

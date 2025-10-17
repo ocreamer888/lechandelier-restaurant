@@ -1,10 +1,15 @@
-export default function Footer() {
+import { getSiteSettings } from "@/lib/sanity";
+
+export default async function Footer() {
+  const settings = await getSiteSettings();
+  const hoursText = settings?.hoursText || "Open Mon–Sat · 6:30pm–11pm";
+  
     return (
       <footer id="contact" className="mt-16">
         <div className="container justify-center items-center w-full flex py-10 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-black/10 bg-gradient-to-br from-pink-200/50 to-pink-200/40 backdrop-blur rounded-3xl">
           <div>
             <div className="font-script justify-center items-center flex text-3xl">Le Chandelier</div>
-            <p className="mt-2 text-sm justify-center items-center flex text-white/60">Open Mon–Sat · 6:30pm–11pm</p>
+            <p className="mt-2 text-sm justify-center items-center flex text-white/60">{hoursText}</p>
           </div>
           <nav className="flex gap-6 justify-center items-center text-sm">
             <a href="#menu" className="hover:underline underline-offset-4">Menu</a>

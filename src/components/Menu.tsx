@@ -6,7 +6,7 @@ import SectionHeading from "./SectionHeading";
 type Category = "Appetizers" | "Pasta" | "Pizza" | "Salads" | "Soups" | "Desserts";
 
 type MenuItem = {
-  id: string;
+  id?: string;
   name: string;
   price: string;
   description: string;
@@ -15,7 +15,8 @@ type MenuItem = {
 
 const CATEGORIES: Category[] = ["Appetizers", "Pasta", "Pizza", "Salads", "Soups", "Desserts"];
 
-const MENU: Record<Category, MenuItem[]> = {
+// Fallback data
+const FALLBACK_MENU: Record<Category, MenuItem[]> = {
   Appetizers: [
     { id: "a1", name: "Marinated Olives", price: "$6", description: "Citrus zest, herbs de Provence, garlic confit." },
     { id: "a2", name: "Burrata", price: "$12", description: "Heirloom tomatoes, basil oil, balsamic, toasted sourdough.", tags: ["Vegetarian"] },
@@ -58,9 +59,22 @@ function TagPill({ children }: { children: string }) {
   );
 }
 
-export default function Menu() {
+type MenuProps = {
+  data?: Record<Category, MenuItem[]>;
+  categories?: Category[];
+};
+
+export default function Menu({ data, categories }: MenuProps) {
   const [active, setActive] = useState<Category>("Pasta");
-  const items = useMemo(() => MENU[active] ?? [], [active]);
+  const menuData = data || FALLBACK_MENU;
+  const menuCategories = categories || CATEGORIES;
+  const items = useMemo(() => {
+    const categoryItems = menuData[active] ?? [];
+    return categoryItems.map((item, idx) => ({
+      ...item,
+      id: item.id || `${active}-${idx}`,
+    }));
+  }, [active, menuData]);
 
   return (
     <section className="section bg-[var(--muted)]/40" id="menu">
@@ -72,7 +86,7 @@ export default function Menu() {
             subtitle="Seasonal ingredients, classic techniques. Select a category to explore."
           />
           <div className="mt-4 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
-            {CATEGORIES.map((c) => (
+            {menuCategories.map((c) => (
               <button
                 key={c}
                 onClick={() => setActive(c)}

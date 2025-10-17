@@ -9,7 +9,7 @@ type SubCategory = {
 };
 
 type Item = {
-  id: string;
+  id?: string;
   name: string;
   price: string;
 };
@@ -21,7 +21,8 @@ interface BarrelStyle {
     isCentered?: boolean;
   }
 
-const DATA: Record<Category, SubCategory[]> = {
+// Fallback data
+const FALLBACK_DATA: Record<Category, SubCategory[]> = {
   "Champagne & Sparkling": [
     {
       name: "All",
@@ -293,12 +294,26 @@ function SubCategoryBarrel({
     );
   }
 
-export default function DrinksMenu() {
+type DrinksMenuProps = {
+  data?: Record<Category, SubCategory[]>;
+};
+
+export default function DrinksMenu({ data }: DrinksMenuProps) {
   const [activeCategory, setActiveCategory] = useState<Category>("Champagne & Sparkling");
   const [activeSubIndex, setActiveSubIndex] = useState(0);
   
-  const subcategories = useMemo(() => DATA[activeCategory] ?? [], [activeCategory]);
-  const currentItems = useMemo(() => subcategories[activeSubIndex]?.items ?? [], [subcategories, activeSubIndex]);
+  // Use provided data or fallback to hardcoded data
+  const menuData = data || FALLBACK_DATA;
+  
+  const subcategories = useMemo(() => menuData[activeCategory] ?? [], [activeCategory, menuData]);
+  const currentItems = useMemo(() => {
+    const items = subcategories[activeSubIndex]?.items ?? [];
+    // Add ids if they don't exist
+    return items.map((item, idx) => ({
+      ...item,
+      id: item.id || `${activeCategory}-${activeSubIndex}-${idx}`,
+    }));
+  }, [subcategories, activeSubIndex, activeCategory]);
 
   const handleCategoryChange = (category: Category) => {
     setActiveCategory(category);
@@ -309,21 +324,29 @@ export default function DrinksMenu() {
     <section className="bg-gradient-to-b from-transparent via-black/20 to-transparent text-white py-8" id="drinks-menu">
       <div className="mx-auto w-full max-w-5xl px-4 lg:px-8">
         {/* Category Buttons */}
-        <div className="mb-6 flex flex-row flex-wrap items-center justify-center gap-2">
-          {(["Champagne & Sparkling", "White Wines", "Red Wines", "Others"] as Category[]).map((c) => (
-            <button
-              key={c}
-              onClick={() => handleCategoryChange(c)}
-              className={`rounded-full border px-4 py-2 text-sm transition ${
-                activeCategory === c
-                  ? "border-white/20 bg-pink-200/40 text-white"
-                  : "border-white/10 bg-pink-200/10 text-white/80 hover:bg-pink-200/20"
-              }`}
-              aria-pressed={activeCategory === c}
-            >
-              {c.toUpperCase()}
-            </button>
-          ))}
+        <div className="flex flex-col items-center justify-around overflow-hidden rounded-full border border-white/20">
+          <div
+            className="py-4 px-8 w-full overflow-x-auto scrollbar-hide"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
+            <div className="flex flex-row justify-around w-full items-center gap-2 py-2 whitespace-nowrap snap-x snap-mandatory">
+              {(["Champagne & Sparkling", "White Wines", "Red Wines", "Others"] as Category[]).map((c) => (
+                <button
+                  key={c}
+                  onClick={() => handleCategoryChange(c)}
+                  className={`flex-shrink-0 snap-center rounded-full border px-12 py-2 text-sm transition ${
+                    activeCategory === c
+                      ? "border-white/20 bg-pink-200/40 text-white"
+                      : "border-white/10 bg-pink-200/10 text-white/80 hover:bg-pink-200/20"
+                  }`}
+                  aria-pressed={activeCategory === c}
+                >
+                  {c.toUpperCase()}
+                  
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         <SectionOrnament text={activeCategory} />

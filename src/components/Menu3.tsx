@@ -273,9 +273,14 @@ function SectionOrnament({ text }: { text: string }) {
   );
 }
 
-export default function Menu3() {
+type Menu3Props = {
+  data?: Record<Category, Item[]>;
+};
+
+export default function Menu3({ data }: Menu3Props = {}) {
+  const menuData = data ?? DATA;
   const [active, setActive] = useState<Category>("Entradas");
-  const items = useMemo(() => DATA[active] ?? [], [active]);
+  const items = useMemo(() => menuData[active] ?? [], [active, menuData]);
 
   return (
     <section className="bg-gradient-to-b from-transparent via-black/20 to-transparent py-16 md:py-24 text-white" id="menu">

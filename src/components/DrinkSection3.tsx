@@ -4,9 +4,9 @@ import DrinksMenu from "./DrinksMenu";
 
 export default function DrinksSection3() {
   return (
-    <section className="relative min-h-screen">
-      <div className="grid items-start justify-start h-auto grid-cols-1 gap-4 p-2 py-16 md:p-4">
-    <Link href="/menu" className="relative h-[28vh] lg:h-[50vh] max-h-[700px] mb-8 lg:mb-0 rounded-3xl overflow-hidden group block border border-white/10" id="menu">
+    <section className="relative min-h-screen flex flex-col items-center justify-center">
+      <div className="grid items-center justify-center lg:w-4/5 w-full h-auto grid-cols-1 gap-4 p-2 py-16 md:p-4">
+    <Link href="/menu" className="relative h-[40vh] max-h-[700px] mb-8 lg:mb-0 rounded-3xl overflow-hidden group block border border-white/10" id="menu">
 <Image
   src="/sangria-le-chandelier-3.png"
   alt="Signature dish plated"

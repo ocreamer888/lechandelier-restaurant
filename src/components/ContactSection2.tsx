@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { Instagram, Facebook } from "lucide-react";
+import type { SiteSettings } from "@/lib/sanity";
 
-// Opening hours data
-const openingHours = [
+// Fallback opening hours data
+const FALLBACK_OPENING_HOURS = [
   { day: "Monday", time: "18:00 - 22:30" },
   { day: "Tuesday", time: "18:00 - 22:30" },
   { day: "Wednesday", time: "18:00 - 22:30" },
@@ -14,7 +15,27 @@ const openingHours = [
   { day: "Sunday", time: "Closed" }
 ];
 
-export default function ContactSection2() {
+const FALLBACK_CONTACT = {
+  address: "Los Yoses, San Jose, Costa Rica",
+  phone: "+506 7130 0911",
+  email: "hello@lechandelier.restaurant",
+  mapsLink: "https://www.google.com/maps/place/Le+Chandelier/@9.9293391,-84.0589315,17z",
+};
+
+const FALLBACK_SOCIAL = {
+  facebook: "https://facebook.com/lechandeliercr",
+  instagram: "https://instagram.com/lechandeliercr",
+  twitter: "https://twitter.com/lechandeliercr",
+};
+
+type ContactSection2Props = {
+  settings?: SiteSettings | null;
+};
+
+export default function ContactSection2({ settings }: ContactSection2Props) {
+  const openingHours = settings?.openingHours || FALLBACK_OPENING_HOURS;
+  const contact = settings?.contact || FALLBACK_CONTACT;
+  const socialLinks = settings?.socialLinks || FALLBACK_SOCIAL;
   return (
     <section className="relative min-h-screen">
       <div className="grid h-auto min-h-screen grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_600px]">
@@ -97,7 +118,7 @@ export default function ContactSection2() {
                   </div>
             <div className="absolute bottom-8">
                   <a
-                href="https://www.google.com/maps/place/Le+Chandelier/@9.9293391,-84.0589315,17z/data=!3m1!4b1!4m6!3m5!1s0x8fa0e3831f9b3775:0xde0516961a0f1eb4!8m2!3d9.9293391!4d-84.0563512!16s%2Fg%2F1tdkc3qb?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D"
+                href={contact.mapsLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 rounded-full bg-black/20 backdrop-blur-md hover:bg-white/20 transition-all text-white text-sm"
@@ -132,26 +153,26 @@ export default function ContactSection2() {
             <div className="space-y-6 items-center justify-center w-full flex flex-col text-white/90">
               <div className="items-center justify-between w-full flex flex-row">
                 <p className="text-xs text-white/60 tracking-wider mb-1">ADDRESS</p>
-                <p className="text-base md:text-lg">Los Yoses, San Jose, Costa Rica</p>
+                <p className="text-base md:text-lg">{contact.address}</p>
               </div>
               
               <div className="items-center justify-between w-full flex flex-row">
                 <p className="text-xs text-white/60 tracking-wider mb-1">PHONE</p>
                 <a
-                  href="tel:+50671300911"
+                  href={`tel:${contact.phone.replace(/\s/g, '')}`}
                   className="text-base md:text-lg hover:text-white transition-colors"
                 >
-                  +506 7130 0911
+                  {contact.phone}
                 </a>
               </div>
               
               <div className="items-center justify-between w-full flex flex-row">
                 <p className="text-xs text-white/60 tracking-wider mb-1">EMAIL</p>
                 <a
-                  href="mailto:hello@lechandelier.restaurant"
+                  href={`mailto:${contact.email}`}
                   className="text-base md:text-lg hover:text-white transition-colors"
                 >
-                  hello@lechandelier.restaurant
+                  {contact.email}
                 </a>
               </div>
               
@@ -159,7 +180,7 @@ export default function ContactSection2() {
                 <p className="text-xs text-white/60 tracking-wider mb-2">FOLLOW</p>
                 <div className="flex gap-4">
                   <a
-                    href="https://facebook.com/lechandeliercr"
+                    href={socialLinks.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 hover:bg-white/10 transition-colors"
@@ -168,7 +189,7 @@ export default function ContactSection2() {
                     <Facebook className="w-4 h-4" />
                   </a>
                   <a
-                    href="https://instagram.com/lechandeliercr"
+                    href={socialLinks.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 hover:bg-white/10 transition-colors"
@@ -177,7 +198,7 @@ export default function ContactSection2() {
                     <Instagram className="w-4 h-4" />
                   </a>
                   <a
-                    href="https://twitter.com/lechandeliercr"
+                    href={socialLinks.twitter}
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 hover:bg-white/10 transition-colors"
                     aria-label="Twitter"
