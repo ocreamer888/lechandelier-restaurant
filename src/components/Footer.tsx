@@ -2,7 +2,7 @@ import { getSiteSettings } from "@/lib/sanity";
 
 export default async function Footer() {
   const settings = await getSiteSettings();
-  const hoursText = settings?.hoursText || "Open Mon–Sat · 6:30pm–11pm";
+  const hoursText = settings?.hoursText || "Open Mon–Sat · 6:00pm–10:30pm";
   
     return (
       <footer id="contact" className="mt-16">

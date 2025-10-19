@@ -23,7 +23,7 @@ export default function ContactSection() {
         <div className="relative h-[96vh] lg:h-full rounded-3xl overflow-hidden">
           <Image
             src="/filler-image-1.png"
-            alt="Signature dish plated"
+            alt="Le Chandelier exterior and entrance"
             fill
             priority
             className="object-cover"

@@ -11,7 +11,7 @@ export default function MenuSection2() {
         <Link href="/menu" className="relative h-[28vh] lg:h-[90vh] max-h-[700px] mb-8 lg:mb-0 rounded-3xl overflow-hidden group block border border-white/10" id="menu">
           <Image
             src="/pato-a-la-naranja-le-chandelier-1.png"
-            alt="Signature dish plated"
+            alt="Duck à l'orange plated at Le Chandelier"
             fill
             priority
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"

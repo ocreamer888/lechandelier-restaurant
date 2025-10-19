@@ -9,7 +9,7 @@ export default function DrinksSection3() {
     <Link href="/menu" className="relative h-[40vh] max-h-[700px] mb-8 lg:mb-0 rounded-3xl overflow-hidden group block border border-white/10" id="menu">
 <Image
   src="/sangria-le-chandelier-3.png"
-  alt="Signature dish plated"
+  alt="Pitcher of house sangria"
   fill
   priority
   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"

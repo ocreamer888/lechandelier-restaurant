@@ -215,7 +215,7 @@ export default function EventsHero() {
         <div className="relative h-[96vh] lg:h-full rounded-3xl overflow-hidden">
           <Image
             src="/Chandelier.png"
-            alt="Signature dish plated"
+            alt="Crystal chandelier lighting at Le Chandelier"
             fill
             priority
             className="object-cover"

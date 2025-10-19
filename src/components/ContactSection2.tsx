@@ -43,7 +43,7 @@ export default function ContactSection2({ settings }: ContactSection2Props) {
         <div className="relative h-[96vh] lg:h-full rounded-3xl overflow-hidden">
           <Image
             src="/restaurante-le-chandelier-3.webp"
-            alt="Signature dish plated"
+            alt="Dining room at Le Chandelier"
             fill
             priority
             className="object-cover"

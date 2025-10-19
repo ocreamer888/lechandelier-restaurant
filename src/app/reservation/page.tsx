@@ -1,11 +1,18 @@
 import ReservationSection from "@/components/ReservationSection";
 import Image from "next/image";
 import NavBar2 from "@/components/NavBar2";
+import StructuredData from "@/components/StructuredData";
+import { generateBreadcrumbSchema } from "@/lib/structured-data";
 
 export default function ReservationsPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Reservation", url: "/reservation" },
+  ]);
   return (
     <main className="min-h-screen">
         <div className="grid items-center justify-center h-auto min-h-screen grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_600px]">
+        <StructuredData data={breadcrumbSchema} />
         <div className="relative h-[96vh] lg:h-full rounded-3xl overflow-hidden">
           <Image
             src="/filler-image-2.png"

@@ -106,7 +106,7 @@ export default function RootLayout({
         <div className="absolute inset-0 -z-10 fixed">
           <Image
             src="/Le-Chandelier-BG.png"
-            alt="Signature dish plated"
+            alt="Restaurant ambiance background"
             fill
             priority
             className="relative object-cover"

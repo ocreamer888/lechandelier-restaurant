@@ -19,7 +19,7 @@ export default function AboutHero() {
         <div className="relative h-[96vh] lg:h-auto rounded-3xl overflow-hidden">
           <Image
             src="/Cocina-Le-Chandelier-3.png"
-            alt="Signature dish plated"
+            alt="Chef preparing ingredients in the kitchen"
             fill
             priority
             className="object-cover"

@@ -81,7 +81,7 @@ export function generateRestaurantSchema({
       '@type': 'PostalAddress',
       streetAddress: 'Los Yoses',
       addressLocality: 'San José',
-      addressRegion: 'San José Province',
+      addressRegion: 'San José',
       addressCountry: 'CR',
     },
     geo: {

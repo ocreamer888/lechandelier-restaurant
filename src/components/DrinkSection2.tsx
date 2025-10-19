@@ -11,7 +11,7 @@ export default function DrinkSection2() {
         <Link href="/menu" className="relative h-[50vh] lg:h-full rounded-3xl overflow-hidden group block order-1 lg:order-2" id="menu">
           <Image
             src="/filler-image-1.png"
-            alt="Signature dish plated"
+            alt="Chef plating a dish in the kitchen"
             fill
             priority
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"

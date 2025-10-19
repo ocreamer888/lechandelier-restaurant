@@ -44,7 +44,7 @@ function SectionOrnament({ text }: { text: string }) {
 function TagDot({ kind }: { kind: "spicy" | "vegan" }) {
   return (
     <span className="ml-2 inline-flex items-center rounded-full border border-yellow-100/40 px-2 py-[1px] text-[10px] uppercase tracking-wider text-yellow-100/70">
-      {kind}
+      {kind === "spicy" ? "Spicy" : "Vegan"}
     </span>
   );
 }

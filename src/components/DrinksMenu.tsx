@@ -27,10 +27,10 @@ const FALLBACK_DATA: Record<Category, SubCategory[]> = {
     {
       name: "All",
       items: [
-        { id: "cs1", name: "Fredenet Cordon Negro", price: "₡35,000" },
-        { id: "cs2", name: "Veuve Cliquot Brut", price: "₡104,550" },
-        { id: "cs3", name: "Moet et Chandon", price: "₡115,620" },
-        { id: "cs4", name: "Dom Perignon", price: "₡328,000" },
+        { id: "cs1", name: "Freixenet Cordon Negro", price: "₡35,000" },
+        { id: "cs2", name: "Veuve Clicquot Brut", price: "₡104,550" },
+        { id: "cs3", name: "Moët & Chandon", price: "₡115,620" },
+        { id: "cs4", name: "Dom Pérignon", price: "₡328,000" },
       ],
     },
   ],
