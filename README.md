@@ -21,7 +21,12 @@ Le Chandelier is a French-Swiss restaurant website designed to provide visitors 
 - 👨‍🍳 **Team Section** - Meet the chefs and staff
 - 🏆 **Awards Section** - Recognition and accolades
 - 📞 **Contact Page** - Location and contact information
-- 📅 **Reservation Page** - Table booking system
+- 📅 **Reservation System** - Full-featured table booking with:
+  - Real-time form validation
+  - Supabase database integration
+  - Email notifications (customer + admin)
+  - Reservation management (view/cancel)
+  - Custom barrel-style date/time pickers
 - 📱 **Fully Responsive** - Optimized for all devices
 - 🎨 **Neumorphic Design** - Modern, elegant UI components
 - ⚡ **Fast Performance** - Built with Next.js 15 and Turbopack
@@ -32,6 +37,11 @@ Le Chandelier is a French-Swiss restaurant website designed to provide visitors 
 - **[Next.js 15.5.4](https://nextjs.org/)** - React framework with App Router
 - **[React 19.1.0](https://react.dev/)** - UI library
 - **[TypeScript 5](https://www.typescriptlang.org/)** - Type safety
+
+### Backend & Database
+- **[Supabase](https://supabase.com/)** - PostgreSQL database with real-time capabilities
+- **[Resend](https://resend.com/)** - Email delivery service
+- **[Sonner](https://sonner.emilkowal.ski/)** - Toast notifications
 
 ### Styling & UI
 - **[Tailwind CSS 4](https://tailwindcss.com/)** - Utility-first CSS framework
@@ -74,6 +84,22 @@ Le Chandelier is a French-Swiss restaurant website designed to provide visitors 
 4. **Open your browser**
    
    Navigate to [http://localhost:3000](http://localhost:3000)
+
+### Setting Up the Reservation System
+
+The reservation system requires additional setup with Supabase and Resend:
+
+1. **Follow the detailed setup guide**: See [RESERVATION_SETUP.md](./RESERVATION_SETUP.md) for complete instructions
+2. **Quick setup**:
+   - Create a Supabase project and database table
+   - Get a Resend API key for email notifications
+   - Configure environment variables in `.env.local`
+
+The reservation system includes:
+- Form validation and submission
+- Database storage with Supabase
+- Email notifications to customers and admin
+- Reservation management (view and cancel bookings)
 
 ## 📜 Scripts
 

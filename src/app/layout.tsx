@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bodoni_Moda, Luxurious_Script, Poppins } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Image from "next/image";
@@ -101,6 +102,7 @@ export default function RootLayout({
       <body className={`${bodoni.variable} ${luxurious.variable} ${poppins.variable} antialiased font-pretty`}>
         <StructuredData data={restaurantSchema} />
         <StructuredData data={organizationSchema} />
+        <Toaster position="top-center" richColors closeButton />
         <div className="absolute inset-0 -z-10 fixed">
           <Image
             src="/Le-Chandelier-BG.png"

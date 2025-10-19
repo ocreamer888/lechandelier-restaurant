@@ -59,7 +59,7 @@ export default function AboutHero() {
                     src="/Cocina-Le-Chandelier-2.webp"
                     alt="Restaurant interior"
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                   />
                 </div>
                
@@ -72,7 +72,7 @@ export default function AboutHero() {
             {awards.map((award, index) => (
               <div
                 key={index}
-                className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-neutral-900 to-black border border-white/10 p-6 flex flex-col items-center justify-center text-center"
+                className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-pink-100/10 to-pink-200/10 border border-white/20 p-6 flex flex-col items-center justify-center text-center"
               >
                 {/* 5 Stars */}
                 <div className="flex gap-1 mb-4">
@@ -118,7 +118,7 @@ export default function AboutHero() {
                 src="/Cocina-Le-Chandelier-1.webp"
                 alt="Chef at work"
                 fill
-                className="object-cover grayscale"
+                className="object-cover grayscale object-left"
               />
             </div>
           </div>

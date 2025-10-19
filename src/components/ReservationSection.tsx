@@ -1,7 +1,10 @@
 "use client";
 import { useState, useCallback } from "react";
+import { toast } from "sonner";
 import { ReservationForm } from "./Reservation";
 import type { ReservationFormData } from "./Reservation";
+import { validateReservationForm } from "@/lib/validation";
+import type { ReservationResponse } from "@/types/reservation";
 
 export default function ReservationSection() {
   // Get today's date in YYYY-MM-DD format
@@ -22,9 +25,60 @@ export default function ReservationSection() {
     time: "18:00",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Reservation submitted:", formData);
+
+    // Client-side validation
+    const validation = validateReservationForm(formData);
+    if (!validation.isValid) {
+      const errorMessage = validation.errors[0].message;
+      toast.error(errorMessage);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/reservations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data: ReservationResponse = await response.json();
+
+      if (data.success && data.reservation) {
+        toast.success("Reservation confirmed! Check your email for details.");
+        
+        // Reset form
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          guests: 2,
+          date: getTodayDate(),
+          time: "18:00",
+        });
+
+        // Show booking ID
+        setTimeout(() => {
+          toast.info(`Booking ID: ${data.reservation!.id.substring(0, 8)}`, {
+            duration: 5000,
+          });
+        }, 1000);
+      } else {
+        toast.error(data.error || "Failed to create reservation. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting reservation:", error);
+      toast.error("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,6 +136,7 @@ export default function ReservationSection() {
           onGuestChange={handleGuestChange}
           onDateChange={handleDateChange}
           onTimeChange={handleTimeChange}
+          isSubmitting={isSubmitting}
         />
       </div>
     </section>

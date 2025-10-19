@@ -1,5 +1,6 @@
 "use client";
 
+import { Loader2 } from "lucide-react";
 import { BarrelGuestPicker } from "./BarrelGuestPicker";
 import { BarrelDatePicker } from "./BarrelDatePicker";
 import { BarrelTimePicker } from "./BarrelTimePicker";
@@ -12,6 +13,7 @@ interface ReservationFormProps {
   onGuestChange: (guests: number) => void;
   onDateChange: (date: string) => void;
   onTimeChange: (time: string) => void;
+  isSubmitting?: boolean;
 }
 
 export function ReservationForm({
@@ -21,6 +23,7 @@ export function ReservationForm({
   onGuestChange,
   onDateChange,
   onTimeChange,
+  isSubmitting = false,
 }: ReservationFormProps) {
   return (
     <form onSubmit={onSubmit} className="space-y-4">
@@ -31,8 +34,9 @@ export function ReservationForm({
         placeholder="Name"
         value={formData.name}
         onChange={onInputChange}
+        disabled={isSubmitting}
         required
-        className="w-full px-6 py-4 bg-transparent border border-white/10 rounded-full text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors"
+        className="w-full px-6 py-4 bg-transparent border border-white/10 rounded-full text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       />
 
       {/* Phone */}
@@ -42,8 +46,9 @@ export function ReservationForm({
         placeholder="Phone Number"
         value={formData.phone}
         onChange={onInputChange}
+        disabled={isSubmitting}
         required
-        className="w-full px-6 py-4 bg-transparent border border-white/10 rounded-full text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors"
+        className="w-full px-6 py-4 bg-transparent border border-white/10 rounded-full text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       />
 
       {/* Email */}
@@ -53,8 +58,9 @@ export function ReservationForm({
         placeholder="Email"
         value={formData.email}
         onChange={onInputChange}
+        disabled={isSubmitting}
         required
-        className="w-full px-6 py-4 bg-transparent border border-white/10 rounded-full text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors"
+        className="w-full px-6 py-4 bg-transparent border border-white/10 rounded-full text-white placeholder:text-white/40 focus:outline-none focus:border-white/30 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       />
 
       {/* Guests, Date, Time - Row */}
@@ -78,9 +84,11 @@ export function ReservationForm({
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full py-4 bg-[#E8DCC8] hover:bg-[#f0e6d6] text-black font-medium tracking-[0.15em] rounded-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+        disabled={isSubmitting}
+        className="w-full py-4 bg-[#E8DCC8] hover:bg-[#f0e6d6] text-black font-medium tracking-[0.15em] rounded-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2"
       >
-        RESERVE
+        {isSubmitting && <Loader2 className="w-5 h-5 animate-spin" />}
+        {isSubmitting ? "PROCESSING..." : "RESERVE"}
       </button>
     </form>
   );
