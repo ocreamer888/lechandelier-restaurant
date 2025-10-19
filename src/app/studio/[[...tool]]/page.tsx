@@ -12,9 +12,7 @@ export default function StudioPage() {
       // backgroundColor: 'rgba(215, 220, 207, 0.1)', // very light overlay of your background color
     }}>
       <NextStudio 
-        config={config}
-        unstable_globalStyles={true}
-      />
+        config={config} />
     </div>
   );
 }
