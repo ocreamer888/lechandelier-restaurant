@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #d7dccf; /* soft sage, similar to Figma */
-  --foreground: #1e1f1c;
-  --muted: #e6e9e0;
-  --card: #f3f5ef;
+  --background: #080a08; /* soft sage, similar to Figma */
+  --foreground: #ffffff;
+  --muted: #101506;
+  --card: #090e00;
   --accent: #a5b199;
 }
 

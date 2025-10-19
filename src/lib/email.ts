@@ -1,7 +1,14 @@
 import { Resend } from 'resend';
 import type { ReservationRecord } from '@/types/reservation';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Create Resend instance only when API key is available
+const getResendInstance = () => {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return null;
+  }
+  return new Resend(apiKey);
+};
 
 const formatDate = (date: string): string => {
   return new Date(date).toLocaleDateString('en-US', {
@@ -24,6 +31,12 @@ export const sendCustomerConfirmationEmail = async (
   reservation: ReservationRecord
 ): Promise<{ success: boolean; error?: string }> => {
   try {
+    const resend = getResendInstance();
+    if (!resend) {
+      console.warn('Resend API key not configured, skipping customer email');
+      return { success: true };
+    }
+
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
     const cancelUrl = `${siteUrl}/reservations/${reservation.id}`;
     
@@ -121,6 +134,12 @@ export const sendAdminNotificationEmail = async (
   reservation: ReservationRecord
 ): Promise<{ success: boolean; error?: string }> => {
   try {
+    const resend = getResendInstance();
+    if (!resend) {
+      console.warn('Resend API key not configured, skipping admin notification email');
+      return { success: true };
+    }
+
     const adminEmail = process.env.RESTAURANT_ADMIN_EMAIL;
     
     if (!adminEmail) {
