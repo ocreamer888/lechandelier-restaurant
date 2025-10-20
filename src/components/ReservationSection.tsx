@@ -60,9 +60,17 @@ export default function ReservationSection() {
         body: JSON.stringify(formData),
       });
 
-      const data: ReservationResponse = await response.json();
+      const contentType = response.headers.get("content-type") || "";
+      let data: ReservationResponse | null = null;
 
-      if (data.success && data.reservation) {
+      if (contentType.includes("application/json")) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        throw new Error(text || `HTTP ${response.status}`);
+      }
+
+      if (response.ok && data?.success && data.reservation) {
         toast.success("Reservation confirmed! Check your email for details.");
         
         // Reset form
@@ -82,7 +90,7 @@ export default function ReservationSection() {
           });
         }, 1000);
       } else {
-        toast.error(data.error || "Failed to create reservation. Please try again.");
+        toast.error(data?.error || data?.message || "Failed to create reservation. Please try again.");
       }
     } catch (error) {
       console.error("Error submitting reservation:", error);
