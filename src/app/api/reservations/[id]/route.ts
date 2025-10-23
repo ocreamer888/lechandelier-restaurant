@@ -5,10 +5,14 @@ import type { CancelReservationResponse } from '@/types/reservation';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
+    
+    // TODO: Add authentication check
+    // const user = await validateSession(request);
+    
     const supabase = getServerSupabase();
 
     const { data: reservation, error } = await supabase
@@ -50,11 +54,14 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
+
+    // TODO: Add authentication check
+    // const user = await validateSession(request);
 
     // Only allow updating status to cancelled
     if (body.status !== 'cancelled') {
@@ -70,54 +77,55 @@ export async function PATCH(
 
     const supabase = getServerSupabase();
 
-    // Check if reservation exists and is not already cancelled
-    const { data: existing, error: fetchError } = await supabase
-      .from('reservations')
-      .select('status')
-      .eq('id', id)
-      .single();
-
-    if (fetchError || !existing) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: 'Reservation not found',
-          error: fetchError?.message || 'Not found',
-        } as CancelReservationResponse,
-        { status: 404 }
-      );
-    }
-
-    // Type assertion for existing record
-    const existingStatus = existing as { status: string };
-    
-    if (existingStatus.status === 'cancelled') {
-      return NextResponse.json(
-        {
-          success: false,
-          message: 'Reservation is already cancelled',
-          error: 'Already cancelled',
-        } as CancelReservationResponse,
-        { status: 400 }
-      );
-    }
-
-    // Update reservation status
-    const { error: updateError } = await supabase
+    // Single optimized query: update only if not already cancelled
+    const { error } = await supabase
       .from('reservations')
       .update({
         status: 'cancelled',
         updated_at: new Date().toISOString(),
       })
-      .eq('id', id);
+      .eq('id', id)
+      .neq('status', 'cancelled') // Prevents re-cancellation
+      .select()
+      .single();
 
-    if (updateError) {
-      console.error('Database error:', updateError);
+    if (error) {
+      // PGRST116 means no rows returned (not found or already cancelled)
+      if (error.code === 'PGRST116') {
+        // Check if it exists at all or is already cancelled
+        const { data: existing } = await supabase
+          .from('reservations')
+          .select('status')
+          .eq('id', id)
+          .single();
+
+        if (!existing) {
+          return NextResponse.json(
+            {
+              success: false,
+              message: 'Reservation not found',
+              error: 'Not found',
+            } as CancelReservationResponse,
+            { status: 404 }
+          );
+        }
+
+        return NextResponse.json(
+          {
+            success: false,
+            message: 'Reservation is already cancelled',
+            error: 'Already cancelled',
+          } as CancelReservationResponse,
+          { status: 400 }
+        );
+      }
+
+      console.error('Database error:', error);
       return NextResponse.json(
         {
           success: false,
           message: 'Failed to cancel reservation',
-          error: updateError.message,
+          error: error.message,
         } as CancelReservationResponse,
         { status: 500 }
       );
