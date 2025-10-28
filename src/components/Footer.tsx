@@ -26,7 +26,7 @@ export default async function Footer() {
             <button className="pill bg-black/20!">Subscribe</button>
           </form>
         </div>
-        <div className="container justify-center items-center w-full flex py-8 text-xs text-white">By <a href="https://www.ocreamer.studio" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4 px-2 font-poppins font-semibold">OCREAMER STUDIO</a> © {new Date().getFullYear()} Le Chandelier</div>
+        <div className="container justify-center items-center w-full flex py-8 text-xs text-white">By <a href="https://www.ocreamer.studio" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4 px-2 font-poppins font-semibold">OCREAMER STUDIO</a> © {new Date().getFullYear()}  <span className="font-script text-xl px-2"> Le Chandelier</span></div>
       </footer>
     );
   }

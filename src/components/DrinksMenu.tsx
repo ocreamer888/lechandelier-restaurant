@@ -326,7 +326,7 @@ export default function DrinksMenu({ data }: DrinksMenuProps) {
         {/* Category Buttons */}
         <div className="flex flex-col items-center justify-around overflow-hidden rounded-full border border-white/20">
           <div
-            className="py-4 px-8 w-full overflow-x-auto scrollbar-hide"
+            className="py-4 px-8 w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             style={{ WebkitOverflowScrolling: "touch" }}
           >
             <div className="flex flex-row justify-around w-full items-center gap-2 py-2 whitespace-nowrap snap-x snap-mandatory">
@@ -342,7 +342,6 @@ export default function DrinksMenu({ data }: DrinksMenuProps) {
                   aria-pressed={activeCategory === c}
                 >
                   {c.toUpperCase()}
-                  
                 </button>
               ))}
             </div>
@@ -370,16 +369,6 @@ export default function DrinksMenu({ data }: DrinksMenuProps) {
           </ul>
         </div>
       </div>
-
-      <style jsx>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
     </section>
   );
 }

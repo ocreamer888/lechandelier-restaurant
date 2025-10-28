@@ -23,7 +23,7 @@ export default defineType({
           fields: [
             defineField({
               name: 'day',
-              title: 'Day',
+              title: 'Day (English)',
               type: 'string',
               options: {
                 list: [
@@ -34,6 +34,23 @@ export default defineType({
                   'Friday',
                   'Saturday',
                   'Sunday',
+                ],
+              },
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'daySpanish',
+              title: 'Day (Spanish)',
+              type: 'string',
+              options: {
+                list: [
+                  'Lunes',
+                  'Martes',
+                  'Miércoles',
+                  'Jueves',
+                  'Viernes',
+                  'Sábado',
+                  'Domingo',
                 ],
               },
               validation: (Rule) => Rule.required(),
@@ -63,10 +80,17 @@ export default defineType({
     }),
     defineField({
       name: 'hoursText',
-      title: 'Hours Text (Footer)',
+      title: 'Hours Text (Footer) - English',
       type: 'string',
       description: 'Short text for footer, e.g., "Open Mon–Sat · 6:30pm–11pm"',
       initialValue: 'Open Mon–Sat · 6:30pm–11pm',
+    }),
+    defineField({
+      name: 'hoursTextSpanish',
+      title: 'Hours Text (Footer) - Spanish',
+      type: 'string',
+      description: 'Short text for footer, e.g., "Abierto Lun–Sáb · 6:30pm–11pm"',
+      initialValue: 'Abierto Lun–Sáb · 6:30pm–11pm',
     }),
     defineField({
       name: 'contact',

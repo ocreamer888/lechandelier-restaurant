@@ -24,7 +24,7 @@ export default defineType({
           fields: [
             defineField({
               name: 'name',
-              title: 'Category Name',
+              title: 'Category Name (English)',
               type: 'string',
               options: {
                 list: [
@@ -34,8 +34,21 @@ export default defineType({
                   { title: 'Salads', value: 'Salads' },
                   { title: 'Soups', value: 'Soups' },
                   { title: 'Desserts', value: 'Desserts' },
+                ],
+              },
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'nameSpanish',
+              title: 'Category Name (Spanish)',
+              type: 'string',
+              options: {
+                list: [
                   { title: 'Entradas', value: 'Entradas' },
-                  { title: 'Platos Fuertes', value: 'Platos Fuertes' },
+                  { title: 'Pastas', value: 'Pastas' },
+                  { title: 'Pizzas', value: 'Pizzas' },
+                  { title: 'Ensaladas', value: 'Ensaladas' },
+                  { title: 'Sopas', value: 'Sopas' },
                   { title: 'Postres', value: 'Postres' },
                 ],
               },
@@ -53,18 +66,26 @@ export default defineType({
                   fields: [
                     defineField({
                       name: 'name',
-                      title: 'Item Name',
+                      title: 'Item Name (English)',
                       type: 'string',
                       validation: (Rule) => Rule.required(),
                     }),
                     defineField({
-                      name: 'nameEnglish',
-                      title: 'Item Name (English)',
+                      name: 'nameSpanish',
+                      title: 'Item Name (Spanish)',
                       type: 'string',
+                      validation: (Rule) => Rule.required(),
                     }),
                     defineField({
                       name: 'description',
-                      title: 'Description',
+                      title: 'Description (English)',
+                      type: 'text',
+                      rows: 3,
+                      validation: (Rule) => Rule.required(),
+                    }),
+                    defineField({
+                      name: 'descriptionSpanish',
+                      title: 'Description (Spanish)',
                       type: 'text',
                       rows: 3,
                       validation: (Rule) => Rule.required(),
@@ -98,6 +119,10 @@ export default defineType({
                           { title: 'Vegetarian', value: 'Vegetarian' },
                           { title: 'Spicy', value: 'Spicy' },
                           { title: 'Gluten-Free', value: 'Gluten‑Free' },
+                          { title: 'Vegano', value: 'Vegano' },
+                          { title: 'Vegetariano', value: 'Vegetariano' },
+                          { title: 'Picante', value: 'Picante' },
+                          { title: 'Sin Gluten', value: 'Sin Gluten' },
                         ],
                       },
                     }),

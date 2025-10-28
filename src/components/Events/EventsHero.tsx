@@ -2,6 +2,7 @@
 import Image from "next/image";
 import NavBar2 from "../NavBar2";
 import { useState } from "react";
+import { useTranslations } from 'next-intl';
 
 // Modal Component
 function EventModal({
@@ -9,11 +10,13 @@ function EventModal({
   onClose,
   title,
   content,
+  closeLabel,
 }: {
   isOpen: boolean;
   onClose: () => void;
   title: string;
   content: React.ReactNode;
+  closeLabel: string;
 }) {
   if (!isOpen) return null;
 
@@ -30,7 +33,7 @@ function EventModal({
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur transition-colors hover:bg-white/20"
-          aria-label="Close modal"
+          aria-label={closeLabel}
         >
           <svg
             width="20"
@@ -109,95 +112,8 @@ function Card({
   );
 }
 
-// Event content data
-const eventContent = {
-  corporate: {
-    title: "Corporate Events",
-    content: (
-      <>
-        <p>
-          Host your next corporate gathering in an atmosphere of refined elegance.
-          Le Chandelier provides the perfect setting for business meetings,
-          company dinners, and professional celebrations.
-        </p>
-        <ul className="list-disc list-inside space-y-2 ml-4">
-          <li>Customizable menu options for any dietary preference</li>
-          <li>Private dining areas available</li>
-          <li>Audio-visual equipment upon request</li>
-          <li>Dedicated event coordinator</li>
-        </ul>
-        <p className="text-amber-400 font-semibold mt-6">
-          Contact us to discuss your corporate event needs.
-        </p>
-      </>
-    ),
-  },
-  celebrations: {
-    title: "Celebrations",
-    content: (
-      <>
-        <p>
-          Mark life&apos;s special moments with an unforgettable dining experience.
-          Whether it&apos;s a birthday, anniversary, or milestone achievement, we&apos;ll
-          help you create lasting memories.
-        </p>
-        <ul className="list-disc list-inside space-y-2 ml-4">
-          <li>Personalized menus and wine pairings</li>
-          <li>Custom desserts and celebration cakes</li>
-          <li>Decorative arrangements available</li>
-          <li>Photography-friendly ambiance</li>
-        </ul>
-        <p className="text-amber-400 font-semibold mt-6">
-          Let us make your celebration extraordinary.
-        </p>
-      </>
-    ),
-  },
-  privateParties: {
-    title: "Private Parties",
-    content: (
-      <>
-        <p>
-          Experience the ultimate in private dining with exclusive access to our
-          beautifully appointed spaces. Perfect for intimate gatherings or larger
-          celebrations with friends and family.
-        </p>
-        <ul className="list-disc list-inside space-y-2 ml-4">
-          <li>Full venue or section buyouts available</li>
-          <li>Customized menu planning with our chefs</li>
-          <li>Premium bar service options</li>
-          <li>Flexible timing and event duration</li>
-        </ul>
-        <p className="text-amber-400 font-semibold mt-6">
-          Inquire about private party packages and availability.
-        </p>
-      </>
-    ),
-  },
-  specialOccasions: {
-    title: "Special Occasions",
-    content: (
-      <>
-        <p>
-          From engagement dinners to graduation celebrations, Le Chandelier
-          specializes in making every special occasion truly memorable with
-          attentive service and exceptional cuisine.
-        </p>
-        <ul className="list-disc list-inside space-y-2 ml-4">
-          <li>Romantic ambiance for intimate occasions</li>
-          <li>Special occasion tasting menus</li>
-          <li>Sommelier recommendations</li>
-          <li>Complimentary champagne toast options</li>
-        </ul>
-        <p className="text-amber-400 font-semibold mt-6">
-          Reserve your special occasion experience today.
-        </p>
-      </>
-    ),
-  },
-};
-
 export default function EventsHero() {
+  const t = useTranslations('events');
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
 
   const openModal = (eventType: string) => {
@@ -208,6 +124,25 @@ export default function EventsHero() {
     setSelectedEvent(null);
   };
 
+  // Generate event content from translations
+  const getEventContent = (eventType: 'corporate' | 'celebrations' | 'privateParties' | 'specialOccasions') => {
+    const features = [0, 1, 2, 3].map(i => t(`${eventType}.features.${i}`));
+    
+    return (
+      <>
+        <p>{t(`${eventType}.description`)}</p>
+        <ul className="list-disc list-inside space-y-2 ml-4">
+          {features.map((feature, i) => (
+            <li key={i}>{feature}</li>
+          ))}
+        </ul>
+        <p className="text-amber-400 font-semibold mt-6">
+          {t(`${eventType}.cta`)}
+        </p>
+      </>
+    );
+  };
+
   return (
     <section className="relative min-h-screen">
       <div className="grid h-auto min-h-screen grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_600px]">
@@ -215,7 +150,7 @@ export default function EventsHero() {
         <div className="relative h-[96vh] lg:h-full rounded-3xl overflow-hidden">
           <Image
             src="/Chandelier.png"
-            alt="Crystal chandelier lighting at Le Chandelier"
+            alt={t('imageAlt')}
             fill
             priority
             className="object-cover"
@@ -224,10 +159,10 @@ export default function EventsHero() {
           <div className="absolute inset-0 bg-black/20" />
           <div className="relative flex flex-col w-full h-full items-center justify-center lg:items-start lg:justify-end p-6 md:p-10">
             <h1 className="pointer-events-none font-script max-w-[16ch] text-center lg:text-left [text-wrap:balance] text-8xl">
-              Events
+              {t('title')}
             </h1>
             <p className="pointer-events-none text-white/90 text-lg tracking-tight">
-              Discover our events and activities.
+              {t('subtitle')}
             </p>
           </div>
         </div>
@@ -236,33 +171,33 @@ export default function EventsHero() {
         <div className="grid grid-cols-2 gap-4">
           <div className="relative h-[28vh] min-h-[180px] lg:h-auto">
             <Card
-              label="Corporate"
+              label={t('corporate.label')}
               src="/restaurante-le-chandelier-2.webp"
-              alt="Corporate events"
+              alt={t('corporate.title')}
               onClick={() => openModal("corporate")}
             />
           </div>
           <div className="relative h-[24vh] min-h-[160px] lg:h-auto">
             <Card
-              label="Celebrations"
+              label={t('celebrations.label')}
               src="/filler-image-2.png"
-              alt="Celebrations"
+              alt={t('celebrations.title')}
               onClick={() => openModal("celebrations")}
             />
           </div>
           <div className="relative h-[24vh] min-h-[160px] lg:h-auto">
             <Card
-              label="Private Parties"
+              label={t('privateParties.label')}
               src="/restaurante-le-chandelier-2.webp"
-              alt="Private parties"
+              alt={t('privateParties.title')}
               onClick={() => openModal("privateParties")}
             />
           </div>
           <div className="relative h-[24vh] min-h-[160px] lg:h-auto">
             <Card
-              label="Special Occasions"
+              label={t('specialOccasions.label')}
               src="/restaurante-le-chandelier-2.webp"
-              alt="Special occasions"
+              alt={t('specialOccasions.title')}
               onClick={() => openModal("specialOccasions")}
             />
           </div>
@@ -273,26 +208,30 @@ export default function EventsHero() {
       <EventModal
         isOpen={selectedEvent === "corporate"}
         onClose={closeModal}
-        title={eventContent.corporate.title}
-        content={eventContent.corporate.content}
+        title={t('corporate.title')}
+        content={getEventContent('corporate')}
+        closeLabel={t('closeModal')}
       />
       <EventModal
         isOpen={selectedEvent === "celebrations"}
         onClose={closeModal}
-        title={eventContent.celebrations.title}
-        content={eventContent.celebrations.content}
+        title={t('celebrations.title')}
+        content={getEventContent('celebrations')}
+        closeLabel={t('closeModal')}
       />
       <EventModal
         isOpen={selectedEvent === "privateParties"}
         onClose={closeModal}
-        title={eventContent.privateParties.title}
-        content={eventContent.privateParties.content}
+        title={t('privateParties.title')}
+        content={getEventContent('privateParties')}
+        closeLabel={t('closeModal')}
       />
       <EventModal
         isOpen={selectedEvent === "specialOccasions"}
         onClose={closeModal}
-        title={eventContent.specialOccasions.title}
-        content={eventContent.specialOccasions.content}
+        title={t('specialOccasions.title')}
+        content={getEventContent('specialOccasions')}
+        closeLabel={t('closeModal')}
       />
     </section>
   );

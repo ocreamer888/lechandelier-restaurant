@@ -22,13 +22,14 @@ export const validatePhone = (phone: string): boolean => {
   return phoneRegex.test(phone);
 };
 
-export const validateDate = (dateString: string): boolean => {
-  const selectedDate = new Date(dateString);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+export const validateDate = (dateString: string, timeString: string): boolean => {
+  // Combine date and time into a DateTime object
+  const reservationDateTime = new Date(`${dateString}T${timeString}`);
+  const now = new Date();
+  const minimumTime = new Date(now.getTime() + 15 * 60 * 1000); // 15 minutes from now
   
-  // Check if date is valid and not in the past
-  return selectedDate >= today && !isNaN(selectedDate.getTime());
+  // Check if datetime is valid and at least 15 minutes in the future
+  return !isNaN(reservationDateTime.getTime()) && reservationDateTime >= minimumTime;
 };
 
 export const validateGuests = (guests: number): boolean => {
@@ -73,10 +74,10 @@ export const validateReservationForm = (
   }
 
   // Validate date
-  if (!data.date || !validateDate(data.date)) {
+  if (!data.date || !validateDate(data.date, data.time)) {
     errors.push({
       field: 'date',
-      message: 'Please select a valid date (today or in the future)',
+      message: 'Please select a date and time at least 15 minutes in the future',
     });
   }
 

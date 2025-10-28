@@ -24,7 +24,13 @@ export default defineType({
           fields: [
             defineField({
               name: 'name',
-              title: 'Category Name',
+              title: 'Category Name (English)',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'nameSpanish',
+              title: 'Category Name (Spanish)',
               type: 'string',
               validation: (Rule) => Rule.required(),
             }),
@@ -40,7 +46,13 @@ export default defineType({
                   fields: [
                     defineField({
                       name: 'name',
-                      title: 'Subcategory Name',
+                      title: 'Subcategory Name (English)',
+                      type: 'string',
+                      validation: (Rule) => Rule.required(),
+                    }),
+                    defineField({
+                      name: 'nameSpanish',
+                      title: 'Subcategory Name (Spanish)',
                       type: 'string',
                       validation: (Rule) => Rule.required(),
                     }),
@@ -56,7 +68,13 @@ export default defineType({
                           fields: [
                             defineField({
                               name: 'name',
-                              title: 'Item Name',
+                              title: 'Item Name (English)',
+                              type: 'string',
+                              validation: (Rule) => Rule.required(),
+                            }),
+                            defineField({
+                              name: 'nameSpanish',
+                              title: 'Item Name (Spanish)',
                               type: 'string',
                               validation: (Rule) => Rule.required(),
                             }),

@@ -1,3 +1,5 @@
+"use client";
+
 import MenuHero2 from "@/components/Menu/MenuHero2";
 import Menu3Wrapper from "@/components/Menu3Wrapper";
 import DrinksSectionWrapper from "@/components/DrinksSectionWrapper";
@@ -8,8 +10,12 @@ import {
   generateMenuSchema,
   generateBreadcrumbSchema,
 } from "@/lib/structured-data";
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function Menu() {
+  const t = useTranslations('breadcrumbs');
+  const locale = useLocale();
+  
   // Generate structured data for the menu page
   const restaurantSchema = generateRestaurantSchema({
     ratingValue: 4.8,
@@ -26,8 +32,8 @@ export default function Menu() {
   });
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "/" },
-    { name: "Menu", url: "/menu" },
+    { name: t('home'), url: `/${locale}` },
+    { name: t('menu'), url: `/${locale}/menu` },
   ]);
 
   return (
@@ -39,7 +45,6 @@ export default function Menu() {
       <Menu3Wrapper/>
       <DrinksSectionWrapper/>
       <ContactSection2Wrapper />
-
     </div>
   );
 }

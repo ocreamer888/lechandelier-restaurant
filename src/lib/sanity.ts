@@ -9,19 +9,28 @@ export function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
 
-// Type definitions for our content
+// Type definitions for our content with bilingual support
+export type SanityImageRef = {
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+};
 export type DrinkItem = {
   name: string;
+  nameSpanish: string;
   price: string;
 };
 
 export type DrinkSubCategory = {
   name: string;
+  nameSpanish: string;
   items: DrinkItem[];
 };
 
 export type DrinkCategory = {
   name: string;
+  nameSpanish: string;
   subcategories: DrinkSubCategory[];
 };
 
@@ -31,8 +40,9 @@ export type DrinksMenuData = {
 
 export type FoodMenuItem = {
   name: string;
-  nameEnglish?: string;
+  nameSpanish: string;
   description: string;
+  descriptionSpanish: string;
   price: string;
   image?: string;
   tags?: string[];
@@ -40,6 +50,7 @@ export type FoodMenuItem = {
 
 export type FoodCategory = {
   name: string;
+  nameSpanish: string;
   items: FoodMenuItem[];
 };
 
@@ -51,48 +62,43 @@ export type TeamMember = {
   _id: string;
   name: string;
   role: string;
-  image: {
-    asset: {
-      _ref: string;
-      _type: 'reference';
-    };
-  };
-  order: number;
+  roleSpanish: string;
+  bio?: string;
+  bioSpanish?: string;
+  image: SanityImageRef;
+  displayOrder: number;
 };
 
 export type Event = {
   _id: string;
   title: string;
+  titleSpanish: string;
   description?: string;
-  image: {
-    asset: {
-      _ref: string;
-      _type: 'reference';
-    };
-  };
-  order: number;
+  descriptionSpanish?: string;
+  image: SanityImageRef;
+  date?: string;
+  displayOrder: number;
 };
 
 export type FeaturedDrink = {
   _id: string;
   title: string;
+  titleSpanish: string;
   description: string;
-  image: {
-    asset: {
-      _ref: string;
-      _type: 'reference';
-    };
-  };
-  order: number;
+  descriptionSpanish: string;
+  image: SanityImageRef;
+  displayOrder: number;
 };
 
 export type SiteSettings = {
   title: string;
   openingHours: {
     day: string;
+    daySpanish: string;
     time: string;
   }[];
   hoursText: string;
+  hoursTextSpanish: string;
   contact: {
     address: string;
     phone: string;
@@ -106,17 +112,20 @@ export type SiteSettings = {
   };
 };
 
-// Fetch functions
+// Language-aware fetch functions
 export async function getDrinksMenu(): Promise<DrinksMenuData | null> {
   try {
     const data = await client.fetch<DrinksMenuData>(
       `*[_type == "drinksMenu" && _id == "drinksMenu"][0]{
         categories[]{
           name,
+          nameSpanish,
           subcategories[]{
             name,
+            nameSpanish,
             items[]{
               name,
+              nameSpanish,
               price
             }
           }
@@ -140,10 +149,12 @@ export async function getFoodMenu(): Promise<FoodMenuData | null> {
       `*[_type == "foodMenu" && _id == "foodMenu"][0]{
         categories[]{
           name,
+          nameSpanish,
           items[]{
             name,
-            nameEnglish,
+            nameSpanish,
             description,
+            descriptionSpanish,
             price,
             image,
             tags
@@ -165,12 +176,15 @@ export async function getFoodMenu(): Promise<FoodMenuData | null> {
 export async function getTeamMembers(): Promise<TeamMember[]> {
   try {
     const data = await client.fetch<TeamMember[]>(
-      `*[_type == "teamMember"] | order(order asc){
+      `*[_type == "teamMember"] | order(displayOrder asc){
         _id,
         name,
         role,
+        roleSpanish,
+        bio,
+        bioSpanish,
         image,
-        order
+        displayOrder
       }`,
       {},
       {
@@ -188,12 +202,15 @@ export async function getTeamMembers(): Promise<TeamMember[]> {
 export async function getEvents(): Promise<Event[]> {
   try {
     const data = await client.fetch<Event[]>(
-      `*[_type == "event"] | order(order asc){
+      `*[_type == "event"] | order(displayOrder asc){
         _id,
         title,
+        titleSpanish,
         description,
+        descriptionSpanish,
         image,
-        order
+        date,
+        displayOrder
       }`,
       {},
       {
@@ -214,9 +231,11 @@ export async function getSiteSettings(): Promise<SiteSettings | null> {
         title,
         openingHours[]{
           day,
+          daySpanish,
           time
         },
         hoursText,
+        hoursTextSpanish,
         contact{
           address,
           phone,
@@ -231,7 +250,7 @@ export async function getSiteSettings(): Promise<SiteSettings | null> {
       }`,
       {},
       {
-        next: { revalidate: process.env.NODE_ENV === 'production' ? 3600 : 0 }, // No cache in dev, 1 hour in production
+        next: { revalidate: process.env.NODE_ENV === 'production' ? 3600 : 0 },
       }
     );
     return data;
@@ -244,12 +263,14 @@ export async function getSiteSettings(): Promise<SiteSettings | null> {
 export async function getFeaturedDrinks(): Promise<FeaturedDrink[]> {
   try {
     const data = await client.fetch<FeaturedDrink[]>(
-      `*[_type == "featuredDrink"] | order(order asc){
+      `*[_type == "featuredDrink"] | order(displayOrder asc){
         _id,
         title,
+        titleSpanish,
         description,
+        descriptionSpanish,
         image,
-        order
+        displayOrder
       }`,
       {},
       {
@@ -261,5 +282,87 @@ export async function getFeaturedDrinks(): Promise<FeaturedDrink[]> {
     console.error('Error fetching featured drinks:', error);
     return [];
   }
+}
+
+// Helper functions to get localized content
+export function getLocalizedDrinkItem(item: DrinkItem, locale: 'en' | 'es'): { name: string; price: string } {
+  return {
+    name: locale === 'es' ? item.nameSpanish : item.name,
+    price: item.price,
+  };
+}
+
+export function getLocalizedDrinkSubCategory(subcategory: DrinkSubCategory, locale: 'en' | 'es'): { name: string; items: { name: string; price: string }[] } {
+  return {
+    name: locale === 'es' ? subcategory.nameSpanish : subcategory.name,
+    items: subcategory.items.map(item => getLocalizedDrinkItem(item, locale)),
+  };
+}
+
+export function getLocalizedDrinkCategory(category: DrinkCategory, locale: 'en' | 'es'): { name: string; subcategories: { name: string; items: { name: string; price: string }[] }[] } {
+  return {
+    name: locale === 'es' ? category.nameSpanish : category.name,
+    subcategories: category.subcategories.map(sub => getLocalizedDrinkSubCategory(sub, locale)),
+  };
+}
+
+export function getLocalizedFoodMenuItem(item: FoodMenuItem, locale: 'en' | 'es'): { name: string; description: string; price: string; image?: string; tags?: string[] } {
+  return {
+    name: locale === 'es' ? item.nameSpanish : item.name,
+    description: locale === 'es' ? item.descriptionSpanish : item.description,
+    price: item.price,
+    image: item.image,
+    tags: item.tags,
+  };
+}
+
+export function getLocalizedFoodCategory(category: FoodCategory, locale: 'en' | 'es'): { name: string; items: { name: string; description: string; price: string; image?: string; tags?: string[] }[] } {
+  return {
+    name: locale === 'es' ? category.nameSpanish : category.name,
+    items: category.items.map(item => getLocalizedFoodMenuItem(item, locale)),
+  };
+}
+
+export function getLocalizedTeamMember(member: TeamMember, locale: 'en' | 'es'): { _id: string; name: string; role: string; bio?: string; image: SanityImageRef; displayOrder: number } {
+  return {
+    _id: member._id,
+    name: member.name,
+    role: locale === 'es' ? member.roleSpanish : member.role,
+    bio: locale === 'es' ? member.bioSpanish : member.bio,
+    image: member.image,
+    displayOrder: member.displayOrder,
+  };
+}
+
+export function getLocalizedEvent(event: Event, locale: 'en' | 'es'): { _id: string; title: string; description?: string; image: SanityImageRef; date?: string; displayOrder: number } {
+  return {
+    _id: event._id,
+    title: locale === 'es' ? event.titleSpanish : event.title,
+    description: locale === 'es' ? event.descriptionSpanish : event.description,
+    image: event.image,
+    date: event.date,
+    displayOrder: event.displayOrder,
+  };
+}
+
+export function getLocalizedSiteSettings(settings: SiteSettings, locale: 'en' | 'es'): SiteSettings {
+  return {
+    ...settings,
+    openingHours: settings.openingHours.map(hours => ({
+      ...hours,
+      day: locale === 'es' ? hours.daySpanish : hours.day,
+    })),
+    hoursText: locale === 'es' ? settings.hoursTextSpanish : settings.hoursText,
+  };
+}
+
+export function getLocalizedFeaturedDrink(drink: FeaturedDrink, locale: 'en' | 'es'): { _id: string; title: string; description: string; image: SanityImageRef; displayOrder: number } {
+  return {
+    _id: drink._id,
+    title: locale === 'es' ? drink.titleSpanish : drink.title,
+    description: locale === 'es' ? drink.descriptionSpanish : drink.description,
+    image: drink.image,
+    displayOrder: drink.displayOrder,
+  };
 }
 

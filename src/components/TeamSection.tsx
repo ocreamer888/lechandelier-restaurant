@@ -1,9 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import SectionHeading from "./SectionHeading";
-import { getTeamMembers, urlFor } from "@/lib/sanity";
+import { getTeamMembers, urlFor, type TeamMember } from "@/lib/sanity";
+import { useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
+
+// Fallback data type
+type FallbackTeamMember = { name: string; role: string; image: string; };
 
 // Fallback data
-const FALLBACK_TEAM = [
+const FALLBACK_TEAM: FallbackTeamMember[] = [
   { name: "Andrea Dubuis", role: "Owner", image: "/Andrea-Retrato-Le-Chandelier.webp" },
   { name: "Federico Sanchez", role: "Manager", image: "/Fede-Retrato-Le-Chandelier-3.webp" },
   { name: "Kevin Araya", role: "Captain", image: "/Kevin-Retrato-Le-Chandelier-3.webp" },
@@ -14,24 +21,28 @@ const FALLBACK_TEAM = [
   { name: "Lenner", role: "Sub-Chef", image: "/Lenner-Retrato-Le-Chandelier-3.webp" },
 ];
 
-export default async function TeamSection() {
-  const teamMembers = await getTeamMembers();
-  
-  // Use Sanity data if available, otherwise fallback
-  const team = teamMembers.length > 0 ? teamMembers : FALLBACK_TEAM;
+export default function TeamSection() {
+  const t = useTranslations('team');
+  const [team, setTeam] = useState<(TeamMember | FallbackTeamMember)[]>(FALLBACK_TEAM);
 
-  console.log('TeamSection - Members count:', team.length, 'From Sanity:', teamMembers.length > 0);
+  useEffect(() => {
+    getTeamMembers().then(teamMembers => {
+      if (teamMembers.length > 0) {
+        setTeam(teamMembers);
+      }
+    });
+  }, []);
 
   return (
     <section className="section" id="team">
       <div className="container">
-        <SectionHeading title="Our team" />
+        <SectionHeading title={t('title')} />
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {team.map((m) => {
             // Check if this is Sanity data (has _id) or fallback data (string image path)
             const imageUrl = '_id' in m && m.image
               ? urlFor(m.image).width(600).height(450).url()
-              : (m as { image: string }).image;
+              : (m as FallbackTeamMember).image;
             
             return (
               <article key={m.name} className="rounded-xl overflow-hidden border border-black/10 bg-white/10">

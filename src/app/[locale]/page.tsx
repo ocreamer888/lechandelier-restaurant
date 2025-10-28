@@ -16,7 +16,6 @@ export default function Home() {
       <DrinksSection3 />
       <TeamSection />
       <ContactSection2Wrapper />
-
     </main>
   );
 }

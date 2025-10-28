@@ -3,6 +3,7 @@
 import Image from "next/image";
 import NavBar2 from "../NavBar2";
 import { Star } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 // Award cards data matching the Figma design
 const awards = [
@@ -12,6 +13,8 @@ const awards = [
 ];
 
 export default function AboutHero() {
+  const t = useTranslations('about');
+  
   return (
     <section className="relative h-screen">
       <div className="grid grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_750px]">
@@ -19,21 +22,20 @@ export default function AboutHero() {
         <div className="relative h-[96vh] lg:h-auto rounded-3xl overflow-hidden">
           <Image
             src="/Cocina-Le-Chandelier-3.png"
-            alt="Chef preparing ingredients in the kitchen"
+            alt={t('images.chef')}
             fill
             priority
             className="object-cover"
           />
           <NavBar2 />
-         <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-black/20" />
           <div className="relative flex flex-col w-full h-full items-center justify-center lg:items-start lg:justify-end p-6 md:p-10">
             <h1 className="pointer-events-none font-script max-w-[16ch] text-center lg:text-left [text-wrap:balance] text-8xl">
-              About
+              {t('title')}
             </h1>
             <p className="pointer-events-none text-white/90 text-lg tracking-tight">
-            Discover our story and our journey.
+              {t('subtitle')}
             </p>
-            
           </div>
         </div>
 
@@ -45,24 +47,23 @@ export default function AboutHero() {
               {/* Left: Heading and Description */}
               <div className="flex flex-col justify-center">
                 <h2 className="text-white font-light text-3xl md:text-4xl lg:text-3xl leading-tight mb-4">
-                  FRENCH-SWISS ARTISTRY REDEFINED
+                  {t('heading')}
                 </h2>
                 <p className="text-white/70 text-sm md:text-base leading-relaxed w-full flex flex-col items-start justify-start">
-                  Where culinary craftsmanship meets modern elegance. Indulge in the finest French-Swiss cuisine, expertly curated to elevate your dining experience.
+                  {t('description')}
                 </p>
               </div>
 
               {/* Right: Restaurant Images */}
               <div className="gap-4">
-              <div className="relative aspect-square rounded-2xl overflow-hidden">
+                <div className="relative aspect-square rounded-2xl overflow-hidden">
                   <Image
                     src="/Cocina-Le-Chandelier-2.webp"
-                    alt="Restaurant interior"
+                    alt={t('images.interior')}
                     fill
                     className="object-cover object-center"
                   />
                 </div>
-               
               </div>
             </div>
           </div>
@@ -105,10 +106,10 @@ export default function AboutHero() {
             {/* Our Story Text */}
             <div className="relative h-[200px] w-full rounded-3xl overflow-hidden bg-gradient-to-br from-neutral-900 to-black border border-white/10 p-8 md:p-10 flex flex-col justify-center">
               <h2 className="text-white font-light text-xl md:text-3xl mb-6">
-                OUR STORY
+                {t('ourStory')}
               </h2>
               <p className="text-white/70 w-full text-sm md:text-base leading-relaxed">
-                Founded with a passion for culinary excellence, Le Chandelier&apos;s journey began in the heart of Costa Rica. Over years, it evolved into a haven for food enthusiasts, celebrated for its artful mastery and devotion to redefining gastronomy.
+                {t('storyContent')}
               </p>
             </div>
 
@@ -116,15 +117,13 @@ export default function AboutHero() {
             <div className="relative h-[300px] md:h-[200px] w-[200px] rounded-3xl overflow-hidden">
               <Image
                 src="/Cocina-Le-Chandelier-1.webp"
-                alt="Chef at work"
+                alt={t('images.chefAtWork')}
                 fill
                 className="object-cover grayscale object-left"
               />
             </div>
           </div>
-
-          {/* Footer Credits */}
-          </div>
+        </div>
       </div>
     </section>
   );

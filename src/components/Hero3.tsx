@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import NavBar2 from "./NavBar2";
+import { useTranslations, useLocale } from 'next-intl';
 
 function Card({
   href,
@@ -24,13 +27,15 @@ function Card({
             <path d="M5 12h12M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </span>
-       
       </div>
     </a>
   );
 }
 
 export default function Hero3() {
+  const t = useTranslations('hero');
+  const locale = useLocale();
+
   return (
     <section className="relative h-auto">
       <div className="grid h-auto lg:h-screen grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_420px]">
@@ -44,27 +49,35 @@ export default function Hero3() {
             className="object-cover"
           />
           <NavBar2 />
-         <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-black/20" />
           <div className="relative flex flex-col w-full h-full items-center justify-center lg:items-start lg:justify-end p-6 md:p-10">
             <h1 className="pointer-events-none font-script max-w-[16ch] text-center lg:text-left [text-wrap:balance] lg:text-8xl text-7xl">
-              Le Chandelier
+              {t('title')}
             </h1>
             <p className="pointer-events-none text-center lg:text-left text-white/90 text-lg tracking-tight">
-            French-Swiss cuisine in the heart of Costa Rica.
+              {t('subtitle')}
             </p>
-            
           </div>
         </div>
 
         {/* Right: stacked cards */}
         <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
           <div className="relative h-[28vh] min-h-[180px] lg:h-auto">
-            <Card href="/menu" label="MENU" src="/menu-le-chandelier-1.png" alt="Explore our menu" />
+            <Card 
+              href={`/${locale}/menu`}
+              label={t('menu')} 
+              src="/menu-le-chandelier-1.png" 
+              alt="Explore our menu" 
+            />
           </div>
           <div className="relative h-[28vh] min-h-[180px] lg:h-auto">
-            <Card href="/reservation" label="RESERVATION" src="/filler-image-2.png" alt="Book a table" />
+            <Card 
+              href={`/${locale}/reservation`}
+              label={t('reservation')} 
+              src="/filler-image-2.png" 
+              alt="Book a table" 
+            />
           </div>
-         
         </div>
       </div>
     </section>

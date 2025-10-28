@@ -1,0 +1,204 @@
+{
+  "hero": {
+    "title": "Le Chandelier",
+    "subtitle": "French-Swiss cuisine in the heart of Costa Rica.",
+    "menu": "MENU",
+    "reservation": "RESERVATION"
+  },
+  "navigation": {
+    "menu": "Menu",
+    "about": "About",
+    "events": "Events",
+    "contact": "Contact",
+    "bookTable": "Book a table"
+  },
+  "awards": {
+    "title": "Awards & Recognition",
+    "tripAdvisor": {
+      "title": "TRIP ADVISOR",
+      "subtitle": "BEST FRENCH RESTAURANT",
+      "location": "SAN JOSE"
+    },
+    "michelinGuide": {
+      "title": "MICHELIN GUIDE",
+      "subtitle": "BEST FRENCH RESTAURANT",
+      "location": "SAN JOSE"
+    },
+    "starDining": {
+      "title": "STAR DINING",
+      "subtitle": "BEST FRENCH RESTAURANT",
+      "location": "SAN JOSE"
+    }
+  },
+  "whoWeAre": {
+    "title": "Who are we?",
+    "subtitle": "Rooted in seasonal produce and wood‑fire traditions. A warm place to gather, celebrate, and savor.",
+    "images": {
+      "dining": "Dining room",
+      "oven": "Wood fired oven",
+      "guests": "Guests enjoying dinner"
+    }
+  },
+  "menu": {
+    "title": "French Cuisine",
+    "subtitle": "French-Swiss cuisine in the heart of Costa Rica.",
+    "imageAlt": "Duck à l'orange plated at Le Chandelier"
+  },
+  "drinks": {
+    "title": "Drinks",
+    "subtitle": "An exquisite selection of champagnes and fine wines from around the world.",
+    "imageAlt": "Pitcher of house sangria"
+  },
+  "team": {
+    "title": "Our team"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Book a table or get in touch with us.",
+    "openingHours": "OPENING HOURS",
+    "getInTouch": "GET IN TOUCH",
+    "address": "ADDRESS",
+    "phone": "PHONE",
+    "email": "EMAIL",
+    "follow": "FOLLOW",
+    "showRoute": "SHOW ROUTE",
+    "mapView": "Map view",
+    "diningRoomAlt": "Dining room at Le Chandelier",
+    "days": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "closed": "Closed"
+    }
+  },
+  "reservation": {
+    "title": "Book a Table",
+    "heading": "RESERVATION",
+    "subtitle": "Secure your spot at Le Chandelier, where exceptional French-Swiss cuisine and a remarkable dining experience await.",
+    "loading": "Loading...",
+    "form": {
+      "name": "Name",
+      "phone": "Phone Number",
+      "email": "Email",
+      "guests": "Guests",
+      "date": "Date",
+      "time": "Time",
+      "submit": "RESERVE",
+      "submitting": "PROCESSING..."
+    },
+    "messages": {
+      "success": "Reservation confirmed! Check your email for details.",
+      "bookingId": "Booking ID:",
+      "error": "Failed to create reservation. Please try again.",
+      "unexpectedError": "An unexpected error occurred. Please try again."
+    },
+    "imageAlt": "Signature dish plated",
+    "view": {
+      "title": "Your Reservation",
+      "bookingId": "Booking ID:",
+      "status": {
+        "confirmed": "confirmed",
+        "pending": "pending",
+        "cancelled": "cancelled"
+      },
+      "guestInfo": "Guest Information",
+      "reservationDetails": "Reservation Details",
+      "dateLabel": "Date",
+      "timeLabel": "Time",
+      "guestsLabel": "Guests",
+      "person": "person",
+      "people": "people",
+      "created": "Created:",
+      "updated": "Updated:",
+      "cancelButton": "Cancel Reservation",
+      "cancelling": "Cancelling...",
+      "returnHome": "Return Home",
+      "confirmCancel": "Are you sure you want to cancel this reservation?",
+      "cancelSuccess": "Reservation cancelled successfully",
+      "cancelError": "Failed to cancel reservation",
+      "notFound": "Reservation not found",
+      "loadError": "Failed to load reservation",
+      "loading": "Loading reservation...",
+      "additionalInfo": "If you have any questions about your reservation, please contact us directly.",
+      "contactInfo": "Phone: +506 7130 0911 | Email: hello@lechandelier.restaurant"
+    }
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Discover our story and our journey.",
+    "heading": "FRENCH-SWISS ARTISTRY REDEFINED",
+    "description": "Where culinary craftsmanship meets modern elegance. Indulge in the finest French-Swiss cuisine, expertly curated to elevate your dining experience.",
+    "ourStory": "OUR STORY",
+    "storyContent": "Founded with a passion for culinary excellence, Le Chandelier's journey began in the heart of Costa Rica. Over years, it evolved into a haven for food enthusiasts, celebrated for its artful mastery and devotion to redefining gastronomy.",
+    "images": {
+      "chef": "Chef preparing ingredients in the kitchen",
+      "interior": "Restaurant interior",
+      "chefAtWork": "Chef at work"
+    }
+  },
+  "events": {
+    "title": "Events",
+    "subtitle": "Discover our events and activities.",
+    "imageAlt": "Crystal chandelier lighting at Le Chandelier",
+    "corporate": {
+      "title": "Corporate Events",
+      "label": "Corporate",
+      "description": "Host your next corporate gathering in an atmosphere of refined elegance. Le Chandelier provides the perfect setting for business meetings, company dinners, and professional celebrations.",
+      "features": [
+        "Customizable menu options for any dietary preference",
+        "Private dining areas available",
+        "Audio-visual equipment upon request",
+        "Dedicated event coordinator"
+      ],
+      "cta": "Contact us to discuss your corporate event needs."
+    },
+    "celebrations": {
+      "title": "Celebrations",
+      "label": "Celebrations",
+      "description": "Mark life's special moments with an unforgettable dining experience. Whether it's a birthday, anniversary, or milestone achievement, we'll help you create lasting memories.",
+      "features": [
+        "Personalized menus and wine pairings",
+        "Custom desserts and celebration cakes",
+        "Decorative arrangements available",
+        "Photography-friendly ambiance"
+      ],
+      "cta": "Let us make your celebration extraordinary."
+    },
+    "privateParties": {
+      "title": "Private Parties",
+      "label": "Private Parties",
+      "description": "Experience the ultimate in private dining with exclusive access to our beautifully appointed spaces. Perfect for intimate gatherings or larger celebrations with friends and family.",
+      "features": [
+        "Full venue or section buyouts available",
+        "Customized menu planning with our chefs",
+        "Premium bar service options",
+        "Flexible timing and event duration"
+      ],
+      "cta": "Inquire about private party packages and availability."
+    },
+    "specialOccasions": {
+      "title": "Special Occasions",
+      "label": "Special Occasions",
+      "description": "From engagement dinners to graduation celebrations, Le Chandelier specializes in making every special occasion truly memorable with attentive service and exceptional cuisine.",
+      "features": [
+        "Romantic ambiance for intimate occasions",
+        "Special occasion tasting menus",
+        "Sommelier recommendations",
+        "Complimentary champagne toast options"
+      ],
+      "cta": "Reserve your special occasion experience today."
+    },
+    "closeModal": "Close modal"
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "about": "About",
+    "menu": "Menu",
+    "events": "Events",
+    "reservation": "Reservation"
+  }
+}

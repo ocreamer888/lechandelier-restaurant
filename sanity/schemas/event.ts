@@ -7,15 +7,29 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Title (English)',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'titleSpanish',
+      title: 'Title (Spanish)',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
-      title: 'Description',
+      title: 'Description (English)',
       type: 'text',
-      rows: 3,
+      rows: 4,
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'descriptionSpanish',
+      title: 'Description (Spanish)',
+      type: 'text',
+      rows: 4,
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'image',
@@ -27,24 +41,21 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'order',
+      name: 'date',
+      title: 'Event Date',
+      type: 'date',
+    }),
+    defineField({
+      name: 'displayOrder',
       title: 'Display Order',
       type: 'number',
-      description: 'Lower numbers appear first',
       initialValue: 0,
     }),
-  ],
-  orderings: [
-    {
-      title: 'Display Order',
-      name: 'orderAsc',
-      by: [{ field: 'order', direction: 'asc' }],
-    },
   ],
   preview: {
     select: {
       title: 'title',
-      subtitle: 'description',
+      subtitle: 'date',
       media: 'image',
     },
   },

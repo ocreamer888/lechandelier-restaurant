@@ -13,9 +13,27 @@ export default defineType({
     }),
     defineField({
       name: 'role',
-      title: 'Role',
+      title: 'Role (English)',
       type: 'string',
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'roleSpanish',
+      title: 'Role (Spanish)',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'bio',
+      title: 'Bio (English)',
+      type: 'text',
+      rows: 4,
+    }),
+    defineField({
+      name: 'bioSpanish',
+      title: 'Bio (Spanish)',
+      type: 'text',
+      rows: 4,
     }),
     defineField({
       name: 'image',
@@ -27,24 +45,11 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'order',
+      name: 'displayOrder',
       title: 'Display Order',
       type: 'number',
-      description: 'Lower numbers appear first',
       initialValue: 0,
     }),
-  ],
-  orderings: [
-    {
-      title: 'Display Order',
-      name: 'orderAsc',
-      by: [{ field: 'order', direction: 'asc' }],
-    },
-    {
-      title: 'Name',
-      name: 'nameAsc',
-      by: [{ field: 'name', direction: 'asc' }],
-    },
   ],
   preview: {
     select: {

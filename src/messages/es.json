@@ -1,0 +1,204 @@
+{
+  "hero": {
+    "title": "Le Chandelier",
+    "subtitle": "Cocina franco-suiza en el corazón de Costa Rica.",
+    "menu": "MENÚ",
+    "reservation": "RESERVA"
+  },
+  "navigation": {
+    "menu": "Menú",
+    "about": "Acerca de",
+    "events": "Eventos",
+    "contact": "Contacto",
+    "bookTable": "Reservar mesa"
+  },
+  "awards": {
+    "title": "Premios y Reconocimientos",
+    "tripAdvisor": {
+      "title": "TRIP ADVISOR",
+      "subtitle": "MEJOR RESTAURANTE FRANCES",
+      "location": "SAN JOSE"
+    },
+    "michelinGuide": {
+      "title": "MICHELIN GUIDE",
+      "subtitle": "MEJOR RESTAURANTE FRANCES",
+      "location": "SAN JOSE"
+    },
+    "starDining": {
+      "title": "STAR DINING",
+      "subtitle": "MEJOR RESTAURANTE FRANCES",
+      "location": "SAN JOSE"
+    }
+  },
+  "whoWeAre": {
+    "title": "¿Quiénes somos?",
+    "subtitle": "Arraigados en productos de temporada y tradiciones de fuego de leña. Un lugar cálido para reunirse, celebrar y saborear.",
+    "images": {
+      "dining": "Comedor",
+      "oven": "Horno de leña",
+      "guests": "Invitados disfrutando de la cena"
+    }
+  },
+  "menu": {
+    "title": "Cocina Francesa",
+    "subtitle": "Cocina franco-suiza en el corazón de Costa Rica.",
+    "imageAlt": "Pato a la naranja emplatado en Le Chandelier"
+  },
+  "drinks": {
+    "title": "Bebidas",
+    "subtitle": "Una exquisita selección de champañas y vinos finos de todo el mundo.",
+    "imageAlt": "Jarra de sangría de la casa"
+  },
+  "team": {
+    "title": "Nuestro equipo"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Reserva una mesa o ponte en contacto con nosotros.",
+    "openingHours": "HORARIO",
+    "getInTouch": "CONTÁCTANOS",
+    "address": "DIRECCIÓN",
+    "phone": "TELÉFONO",
+    "email": "EMAIL",
+    "follow": "SÍGUENOS",
+    "showRoute": "VER RUTA",
+    "mapView": "Vista de mapa",
+    "diningRoomAlt": "Comedor en Le Chandelier",
+    "days": {
+      "monday": "Lunes",
+      "tuesday": "Martes",
+      "wednesday": "Miércoles",
+      "thursday": "Jueves",
+      "friday": "Viernes",
+      "saturday": "Sábado",
+      "sunday": "Domingo",
+      "closed": "Cerrado"
+    }
+  },
+  "reservation": {
+    "title": "Reservar Mesa",
+    "heading": "RESERVA",
+    "subtitle": "Asegura tu lugar en Le Chandelier, donde te espera una cocina franco-suiza excepcional y una experiencia gastronómica memorable.",
+    "loading": "Cargando...",
+    "form": {
+      "name": "Nombre",
+      "phone": "Número de Teléfono",
+      "email": "Correo Electrónico",
+      "guests": "Personas",
+      "date": "Fecha",
+      "time": "Hora",
+      "submit": "RESERVAR",
+      "submitting": "PROCESANDO..."
+    },
+    "messages": {
+      "success": "¡Reserva confirmada! Revisa tu correo para más detalles.",
+      "bookingId": "ID de Reserva:",
+      "error": "No se pudo crear la reserva. Por favor, intenta de nuevo.",
+      "unexpectedError": "Ocurrió un error inesperado. Por favor, intenta de nuevo."
+    },
+    "imageAlt": "Plato signature emplatado",
+    "view": {
+      "title": "Tu Reserva",
+      "bookingId": "ID de Reserva:",
+      "status": {
+        "confirmed": "confirmada",
+        "pending": "pendiente",
+        "cancelled": "cancelada"
+      },
+      "guestInfo": "Información del Huésped",
+      "reservationDetails": "Detalles de la Reserva",
+      "dateLabel": "Fecha",
+      "timeLabel": "Hora",
+      "guestsLabel": "Personas",
+      "person": "persona",
+      "people": "personas",
+      "created": "Creada:",
+      "updated": "Actualizada:",
+      "cancelButton": "Cancelar Reserva",
+      "cancelling": "Cancelando...",
+      "returnHome": "Volver al Inicio",
+      "confirmCancel": "¿Estás seguro de que deseas cancelar esta reserva?",
+      "cancelSuccess": "Reserva cancelada exitosamente",
+      "cancelError": "No se pudo cancelar la reserva",
+      "notFound": "Reserva no encontrada",
+      "loadError": "No se pudo cargar la reserva",
+      "loading": "Cargando reserva...",
+      "additionalInfo": "Si tienes alguna pregunta sobre tu reserva, por favor contáctanos directamente.",
+      "contactInfo": "Teléfono: +506 7130 0911 | Email: hello@lechandelier.restaurant"
+    }
+  },
+  "about": {
+    "title": "Acerca de",
+    "subtitle": "Descubre nuestra historia y nuestro viaje.",
+    "heading": "ARTE FRANCO-SUIZO REDEFINIDO",
+    "description": "Donde la artesanía culinaria se encuentra con la elegancia moderna. Disfruta de la mejor cocina franco-suiza, expertamente seleccionada para elevar tu experiencia gastronómica.",
+    "ourStory": "NUESTRA HISTORIA",
+    "storyContent": "Fundado con una pasión por la excelencia culinaria, el viaje de Le Chandelier comenzó en el corazón de Costa Rica. Con los años, evolucionó en un refugio para entusiastas de la comida, celebrado por su maestría artística y devoción por redefinir la gastronomía.",
+    "images": {
+      "chef": "Chef preparando ingredientes en la cocina",
+      "interior": "Interior del restaurante",
+      "chefAtWork": "Chef en acción"
+    }
+  },
+  "events": {
+    "title": "Eventos",
+    "subtitle": "Descubre nuestros eventos y actividades.",
+    "imageAlt": "Iluminación de candelabro de cristal en Le Chandelier",
+    "corporate": {
+      "title": "Eventos Corporativos",
+      "label": "Corporativo",
+      "description": "Organiza tu próxima reunión corporativa en un ambiente de elegancia refinada. Le Chandelier ofrece el escenario perfecto para reuniones de negocios, cenas de empresa y celebraciones profesionales.",
+      "features": [
+        "Opciones de menú personalizables para cualquier preferencia dietética",
+        "Áreas privadas de comedor disponibles",
+        "Equipo audiovisual bajo petición",
+        "Coordinador de eventos dedicado"
+      ],
+      "cta": "Contáctanos para discutir las necesidades de tu evento corporativo."
+    },
+    "celebrations": {
+      "title": "Celebraciones",
+      "label": "Celebraciones",
+      "description": "Marca los momentos especiales de la vida con una experiencia gastronómica inolvidable. Ya sea un cumpleaños, aniversario o logro importante, te ayudaremos a crear recuerdos duraderos.",
+      "features": [
+        "Menús personalizados y maridajes de vino",
+        "Postres personalizados y pasteles de celebración",
+        "Arreglos decorativos disponibles",
+        "Ambiente ideal para fotografías"
+      ],
+      "cta": "Déjanos hacer tu celebración extraordinaria."
+    },
+    "privateParties": {
+      "title": "Fiestas Privadas",
+      "label": "Fiestas Privadas",
+      "description": "Experimenta lo máximo en cena privada con acceso exclusivo a nuestros espacios bellamente decorados. Perfecto para reuniones íntimas o celebraciones más grandes con amigos y familia.",
+      "features": [
+        "Compra completa del local o secciones disponibles",
+        "Planificación de menú personalizada con nuestros chefs",
+        "Opciones de servicio de bar premium",
+        "Horarios flexibles y duración del evento"
+      ],
+      "cta": "Consulta sobre paquetes de fiestas privadas y disponibilidad."
+    },
+    "specialOccasions": {
+      "title": "Ocasiones Especiales",
+      "label": "Ocasiones Especiales",
+      "description": "Desde cenas de compromiso hasta celebraciones de graduación, Le Chandelier se especializa en hacer que cada ocasión especial sea verdaderamente memorable con servicio atento y cocina excepcional.",
+      "features": [
+        "Ambiente romántico para ocasiones íntimas",
+        "Menús de degustación para ocasiones especiales",
+        "Recomendaciones del sommelier",
+        "Opciones de brindis con champagne de cortesía"
+      ],
+      "cta": "Reserva tu experiencia de ocasión especial hoy."
+    },
+    "closeModal": "Cerrar modal"
+  },
+  "breadcrumbs": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "menu": "Menú",
+    "events": "Eventos",
+    "reservation": "Reserva"
+  }
+}

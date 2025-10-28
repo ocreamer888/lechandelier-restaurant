@@ -28,8 +28,8 @@ export default async function Menu3Wrapper() {
       if (categoryName === 'Entradas' || categoryName === 'Platos Fuertes' || categoryName === 'Postres') {
         transformedData![categoryName] = category.items.map((item, idx) => ({
           id: `${categoryName}-${idx}`,
-          name: item.name,
-          nameEnglish: item.nameEnglish || '',
+          name: item.nameSpanish,
+          nameEnglish: item.name,
           description: item.description,
           price: item.price,
           image: item.image || '/restaurante-le-chandelier-2.webp',
