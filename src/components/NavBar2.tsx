@@ -11,7 +11,6 @@ export default function NavBar2() {
   const locale = useLocale();
 
   const links = [
-    { href: `/${locale}/menu`, label: t('menu') },
     { href: `/${locale}/about`, label: t('about') },
   ];
 
@@ -30,7 +29,7 @@ export default function NavBar2() {
           </div>
           
           {/* Center: Navigation - grows/shrinks with content */}
-          <div className="hidden md:flex flex-grow items-center justify-center gap-3 py-2 px-4 rounded-full bg-black/80 min-w-0">
+          <div className="hidden md:flex flex-grow items-center justify-around gap-3 py-2 px-4 rounded-full bg-black/80 min-w-0">
             <nav className="flex items-center justify-center flex-wrap gap-x-6 text-sm">
               {links.map((l, idx) => (
                 <React.Fragment key={l.href}>
