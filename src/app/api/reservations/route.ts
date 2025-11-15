@@ -45,6 +45,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // After line 35, add server-side date validation
+    const validateDateServerSide = (dateString: string, timeString: string): boolean => {
+      // Parse date and time components separately
+      const [year, month, day] = dateString.split('-').map(Number);
+      const [hours, minutes] = timeString.split(':').map(Number);
+      
+      // Create date in local timezone (server's timezone)
+      const reservationDateTime = new Date(year, month - 1, day, hours, minutes, 0, 0);
+      const now = new Date();
+      const minimumTime = new Date(now.getTime() + 15 * 60 * 1000);
+      
+      return !isNaN(reservationDateTime.getTime()) && reservationDateTime >= minimumTime;
+    };
+
+    // In the POST function, after validation check:
+    if (!validateDateServerSide(body.date, body.time)) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Validation failed',
+          error: 'Please select a date and time at least 15 minutes in the future',
+        } as ReservationResponse,
+        { status: 400 }
+      );
+    }
+
     // Get server-side Supabase client
     const supabase = getServerSupabase();
     console.log('✅ Supabase client created');
@@ -59,6 +85,35 @@ export async function POST(request: NextRequest) {
       time: body.time,
       status: 'pending' as const,
     };
+
+    // Before inserting, check for existing reservations at the same time
+    const { data: existingReservations, error: checkError } = await supabase
+      .from('reservations')
+      .select('id')
+      .eq('date', body.date)
+      .eq('time', body.time)
+      .eq('status', 'pending')
+      .or('status.eq.confirmed')
+      .limit(1);
+
+    if (checkError) {
+      console.error('Error checking availability:', checkError);
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Failed to check availability',
+          error: checkError.message,
+        } as ReservationResponse,
+        { status: 500 }
+      );
+    }
+
+    // Optional: Check if there are too many reservations at this time
+    // (You might want to limit based on restaurant capacity)
+    if (existingReservations && existingReservations.length > 0) {
+      // You could either reject or allow multiple reservations
+      // For now, we'll allow but you might want to add capacity logic
+    }
 
     const { data: reservation, error: dbError } = await supabase
       .from('reservations')

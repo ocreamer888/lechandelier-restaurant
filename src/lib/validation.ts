@@ -23,8 +23,12 @@ export const validatePhone = (phone: string): boolean => {
 };
 
 export const validateDate = (dateString: string, timeString: string): boolean => {
-  // Combine date and time into a DateTime object
-  const reservationDateTime = new Date(`${dateString}T${timeString}`);
+  // Parse date and time components separately to avoid timezone issues
+  const [year, month, day] = dateString.split('-').map(Number);
+  const [hours, minutes] = timeString.split(':').map(Number);
+  
+  // Create date in local timezone explicitly
+  const reservationDateTime = new Date(year, month - 1, day, hours, minutes, 0, 0);
   const now = new Date();
   const minimumTime = new Date(now.getTime() + 15 * 60 * 1000); // 15 minutes from now
   
