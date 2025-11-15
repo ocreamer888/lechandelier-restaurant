@@ -41,7 +41,7 @@ export const sendCustomerConfirmationEmail = async (
     const cancelUrl = `${siteUrl}/reservations/${reservation.id}`;
     
     const { error } = await resend.emails.send({
-      from: 'Le Chandelier <arthub@ocreamer.studio>',
+      from: 'Le Chandelier <reservaciones@lechandelier.restaurant>',
       to: [reservation.email],
       subject: 'Reservation Confirmation - Le Chandelier',
       html: `
@@ -103,7 +103,7 @@ export const sendCustomerConfirmationEmail = async (
                 <p style="font-size: 14px; color: #666; margin: 5px 0;"><strong>Le Chandelier</strong></p>
                 <p style="font-size: 14px; color: #666; margin: 5px 0;">French-Swiss Restaurant</p>
                 <p style="font-size: 14px; color: #666; margin: 5px 0;">Phone: +1 (555) 123-4567</p>
-                <p style="font-size: 14px; color: #666; margin: 5px 0;">Email: arthub@ocreamer.studio</p>
+                <p style="font-size: 14px; color: #666; margin: 5px 0;">Email: reservaciones@lechandelier.restaurant</p>
               </div>
             </div>
             
@@ -151,7 +151,7 @@ export const sendAdminNotificationEmail = async (
     const viewUrl = `${siteUrl}/reservations/${reservation.id}`;
     
     const { error } = await resend.emails.send({
-      from: 'Le Chandelier <arthub@ocreamer.studio>',
+      from: 'Le Chandelier <reservaciones@lechandelier.restaurant>',
       to: [adminEmail],
       subject: `New Reservation - ${reservation.name} - ${formatDate(reservation.date)}`,
       html: `
