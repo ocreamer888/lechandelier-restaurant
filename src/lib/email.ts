@@ -66,7 +66,7 @@ const logEmailError = (type: 'customer' | 'admin', reservationId: string, error:
 
 // Retry logic with exponential backoff
 const sendEmailWithRetry = async (
-  sendFn: () => Promise<{ error?: any }>,
+  sendFn: () => Promise<{ error?: unknown }>,
   maxRetries = 3,
   baseDelay = 1000
 ): Promise<{ success: boolean; error?: string }> => {
