@@ -133,13 +133,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send confirmation emails (don't block the response if emails fail)
-    Promise.all([
+    // Send confirmation emails (non-blocking but tracked)
+    const emailResults = await Promise.allSettled([
       sendCustomerConfirmationEmail(reservation),
       sendAdminNotificationEmail(reservation),
-    ]).catch((emailError) => {
-      console.error('Error sending emails:', emailError);
-      // Log but don't fail the request
+    ]);
+
+    emailResults.forEach((result, index) => {
+      if (result.status === 'rejected') {
+        const emailType = index === 0 ? 'customer' : 'admin';
+        console.error(`Failed to send ${emailType} email:`, result.reason);
+      } else if (result.status === 'fulfilled' && !result.value.success) {
+        const emailType = index === 0 ? 'customer' : 'admin';
+        console.error(`Failed to send ${emailType} email:`, result.value.error);
+      }
     });
 
     return NextResponse.json(
