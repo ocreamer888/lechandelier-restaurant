@@ -327,11 +327,7 @@ Recibido el ${new Date().toLocaleString('es-ES', { dateStyle: 'full', timeStyle:
                   </tr>
                 </table>
                 
-                <div style="margin-top: 30px; text-align: center;">
-                  <a href="${viewUrl}" style="display: inline-block; background-color: #1a1a1a; color: white; padding: 12px 30px; text-decoration: none; border-radius: 4px; font-weight: bold;">
-                    Ver Reserva
-                  </a>
-                </div>
+
                 
                 <p style="margin-top: 30px; font-size: 12px; color: #666; text-align: center;">
                   Recibido el ${new Date().toLocaleString('es-ES', { dateStyle: 'full', timeStyle: 'short' })}
