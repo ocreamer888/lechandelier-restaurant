@@ -2,20 +2,19 @@ import createMiddleware from 'next-intl/middleware';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const intlMiddleware = createMiddleware({
+export default createMiddleware({
+  // A list of all locales that are supported
   locales: ['en', 'es'],
-  defaultLocale: 'es'
+
+  // Used when no locale matches
+  defaultLocale: 'es',
+  
+  // Always show the locale prefix, even for default locale
+  localePrefix: 'always'
 });
 
-export default function middleware(request: NextRequest) {
-  // Force redirect root to /es
-  if (request.nextUrl.pathname === '/') {
-    return NextResponse.redirect(new URL('/es', request.url));
-  }
-  
-  return intlMiddleware(request);
-}
-
 export const config = {
-  matcher: ['/', '/(es|en)/:path*']
+  // Match only internationalized pathnames
+  // Exclude API routes, Next.js internals, static files, and Sanity Studio
+  matcher: ['/', '/(es|en)/:path*', '/((?!api|_next|_vercel|.*\\..*|studio).*)']
 };
