@@ -38,7 +38,7 @@ export default function Hero3() {
 
   return (
     <section className="relative h-auto">
-      <div className="grid h-auto lg:h-screen grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_420px]">
+      <div className="grid h-auto lg:h-screen grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_600px]">
         {/* Left: main hero image */}
         <div className="relative h-[96vh] lg:h-full rounded-3xl overflow-hidden">
           <Image
@@ -46,6 +46,7 @@ export default function Hero3() {
             alt="Beef Stroganoff plated at Le Chandelier"
             fill
             priority
+            quality={100}
             className="object-cover"
           />
           <NavBar2 />
@@ -63,19 +64,19 @@ export default function Hero3() {
         {/* Right: stacked cards */}
         <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
           <div className="relative h-[28vh] min-h-[180px] lg:h-auto">
-            <Card 
+            <Card
               href={`/${locale}/menu`}
-              label={t('menu')} 
-              src="/menu-le-chandelier-1.png" 
-              alt="Explore our menu" 
+              label={t('menu')}
+              src="/menu-le-chandelier-1.png"
+              alt="Explore our menu"
             />
           </div>
           <div className="relative h-[28vh] min-h-[180px] lg:h-auto">
-            <Card 
+            <Card
               href={`/${locale}/reservation`}
-              label={t('reservation')} 
-              src="/filler-image-2.png" 
-              alt="Book a table" 
+              label={t('reservation')}
+              src="/filler-image-2.png"
+              alt="Book a table"
             />
           </div>
         </div>

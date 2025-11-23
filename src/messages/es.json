@@ -7,10 +7,10 @@
   },
   "navigation": {
     "menu": "Menú",
-    "about": "Acerca de",
+    "about": "Nosotros",
     "events": "Eventos",
     "contact": "Contacto",
-    "bookTable": "Reservar mesa"
+    "bookTable": "Reservar"
   },
   "awards": {
     "title": "Premios y Reconocimientos",
@@ -105,7 +105,7 @@
         "pending": "pendiente",
         "cancelled": "cancelada"
       },
-      "guestInfo": "Información del Huésped",
+      "guestInfo": "Información del Cliente",
       "reservationDetails": "Detalles de la Reserva",
       "dateLabel": "Fecha",
       "timeLabel": "Hora",
@@ -124,7 +124,7 @@
       "loadError": "No se pudo cargar la reserva",
       "loading": "Cargando reserva...",
       "additionalInfo": "Si tienes alguna pregunta sobre tu reserva, por favor contáctanos directamente.",
-      "contactInfo": "Teléfono: +506 7130 0911 | Email: hello@lechandelier.restaurant"
+      "contactInfo": "Teléfono: +506 7130 0911 | Email: reservas@lechandelier.restaurant"
     }
   },
   "about": {
@@ -196,7 +196,7 @@
   },
   "breadcrumbs": {
     "home": "Inicio",
-    "about": "Acerca de",
+    "about": "Nosotros",
     "menu": "Menú",
     "events": "Eventos",
     "reservation": "Reserva"

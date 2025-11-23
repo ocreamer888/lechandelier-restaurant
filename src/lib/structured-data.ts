@@ -23,7 +23,7 @@ export function generateRestaurantSchema({
   reviewCount,
 }: RestaurantSchemaParams = {}) {
   const baseUrl = 'https://www.lechandelier.restaurant';
-  
+
   // Use settings data if available, otherwise use fallbacks
   const contact = settings?.contact || {
     address: 'Los Yoses, San Jose, Costa Rica',
@@ -65,24 +65,29 @@ export function generateRestaurantSchema({
     '@type': 'Restaurant',
     '@id': `${baseUrl}/#restaurant`,
     name: 'Le Chandelier',
+    alternateName: 'Le Chandelier Restaurant',
     description:
-      'Le Chandelier illuminates Costa Rica with refined French-Swiss dining, masterfully crafted dishes, curated wines, and an ambiance of timeless elegance and warmth.',
+      'Le Chandelier illuminates Costa Rica with refined French-Swiss dining, masterfully crafted dishes, curated wines, and an ambiance of timeless elegance and warmth. Premier fine dining restaurant in San José, Costa Rica.',
     image: [
       `${baseUrl}/restaurante-le-chandelier-1.webp`,
       `${baseUrl}/restaurante-le-chandelier-2.webp`,
       `${baseUrl}/restaurante-le-chandelier-3.webp`,
+      `${baseUrl}/cocina-le-chandelier.png`,
+      `${baseUrl}/entrada-le-chandelier-1.png`,
     ],
+    logo: `${baseUrl}/Chandelier.png`,
     url: baseUrl,
     telephone: contact.phone,
     email: contact.email,
     priceRange: '$$$$',
-    servesCuisine: ['French', 'Swiss'],
+    servesCuisine: ['French', 'Swiss', 'French-Swiss', 'European', 'Fine Dining'],
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Los Yoses',
       addressLocality: 'San José',
-      addressRegion: 'San José',
+      addressRegion: 'San José Province',
       addressCountry: 'CR',
+      postalCode: '10105',
     },
     geo: {
       '@type': 'GeoCoordinates',
@@ -90,8 +95,44 @@ export function generateRestaurantSchema({
       longitude: -84.0589315,
     },
     openingHoursSpecification,
-    sameAs: [socialLinks.facebook, socialLinks.instagram, socialLinks.twitter],
+    sameAs: [
+      socialLinks.facebook,
+      socialLinks.instagram,
+      socialLinks.twitter
+    ],
     hasMap: 'https://www.google.com/maps/place/Le+Chandelier/@9.9293391,-84.0589315,17z',
+
+    // Additional SEO fields
+    menu: `${baseUrl}/en/menu`,
+    acceptsReservations: true,
+    currenciesAccepted: 'CRC, USD',
+    paymentAccepted: ['Cash', 'Credit Card', 'Debit Card'],
+
+    // Menu sections
+    hasMenuSection: [
+      { '@type': 'MenuSection', name: 'Appetizers' },
+      { '@type': 'MenuSection', name: 'Main Courses' },
+      { '@type': 'MenuSection', name: 'Desserts' },
+      { '@type': 'MenuSection', name: 'Wine List' },
+    ],
+
+    // Dining options
+    smokingAllowed: false,
+    takeoutAvailable: false,
+    deliveryAvailable: false,
+
+    // Additional attributes for Costa Rica
+    areaServed: {
+      '@type': 'City',
+      name: 'San José',
+      containedIn: {
+        '@type': 'Country',
+        name: 'Costa Rica',
+      },
+    },
+
+    // Keywords for search
+    keywords: 'French restaurant Costa Rica, Swiss restaurant San José, fine dining Costa Rica, best restaurant San José, romantic restaurant Costa Rica, Le Chandelier',
   };
 
   // Add aggregate rating if provided
@@ -158,7 +199,7 @@ export function generateBreadcrumbSchema(items: Array<{ name: string; url: strin
  */
 export function generateOrganizationSchema(settings?: SiteSettings | null) {
   const baseUrl = 'https://www.lechandelier.restaurant';
-  
+
   const socialLinks = settings?.socialLinks || {
     facebook: 'https://facebook.com/lechandeliercr',
     instagram: 'https://instagram.com/lechandeliercr',

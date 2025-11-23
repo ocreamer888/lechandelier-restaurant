@@ -15,7 +15,7 @@ export default function NavBar2() {
   ];
 
   return (
-    <header className={`relative lg:absolute rounded-full z-50 transition-all backdrop-blur bg-black/20 border-b border-black/10 m-4`}>
+    <header className={`relative flex flex-grow lg:absolute rounded-full z-50 transition-all backdrop-blur bg-black/20 border-b border-black/10 m-4`}>
       <div className="container">
         <div className="flex flex-wrap md:flex-nowrap items-center justify-between gap-4 py-2">
           {/* Left: Brand */}
@@ -27,7 +27,7 @@ export default function NavBar2() {
               Le Chandelier
             </Link>
           </div>
-          
+
           {/* Center: Navigation - grows/shrinks with content */}
           <div className="hidden md:flex flex-grow items-center justify-around gap-3 py-2 px-4 rounded-full bg-black/80 min-w-0">
             <nav className="flex items-center justify-center flex-wrap gap-x-6 text-sm">
@@ -47,10 +47,10 @@ export default function NavBar2() {
             </nav>
             <LanguageSwitcher />
           </div>
-          
+
           {/* Right: Book a table */}
           <div className="flex-shrink-0">
-            <NeumorphicButton 
+            <NeumorphicButton
               href={`/${locale}/reservation`}
               ariaLabel={t('bookTable')}
             >

@@ -14,10 +14,10 @@ const awards = [
 
 export default function AboutHero() {
   const t = useTranslations('about');
-  
+
   return (
     <section className="relative h-screen">
-      <div className="grid grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_750px]">
+      <div className="grid grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_430px] xl:grid-cols-[1fr_690px]">
         {/* Left: Large "ABOUT" text with vegetables/salt image */}
         <div className="relative h-[96vh] lg:h-auto rounded-3xl overflow-hidden">
           <Image
@@ -84,12 +84,12 @@ export default function AboutHero() {
                     />
                   ))}
                 </div>
-                
+
                 {/* Award Title */}
                 <h3 className="text-white font-light text-sm md:text-base tracking-widest mb-2">
                   {award.title}
                 </h3>
-                
+
                 {/* Subtitle */}
                 <p className="text-white/50 text-xs tracking-wide mb-1">
                   {award.subtitle}
@@ -102,9 +102,9 @@ export default function AboutHero() {
           </div>
 
           {/* Bottom Section: Our Story + Chef Image */}
-          <div className="grid grid-cols-1 w-full items-center justify-center md:grid-cols-[1fr_200px] gap-4">
+          <div className="grid grid-cols-1 w-full h-auto items-center justify-center md:grid-cols-[1fr_200px] lg:grid-cols-1 xl:grid-cols-[1fr_200px] gap-4">
             {/* Our Story Text */}
-            <div className="relative h-[200px] w-full rounded-3xl overflow-hidden bg-gradient-to-br from-neutral-900 to-black border border-white/10 p-8 md:p-10 flex flex-col justify-center">
+            <div className="relative h-auto w-full rounded-3xl overflow-hidden bg-gradient-to-br from-neutral-900 to-black border border-white/10 p-8 md:p-10 flex flex-col justify-center">
               <h2 className="text-white font-light text-xl md:text-3xl mb-6">
                 {t('ourStory')}
               </h2>
@@ -114,7 +114,7 @@ export default function AboutHero() {
             </div>
 
             {/* Chef Image */}
-            <div className="relative h-[300px] md:h-[200px] w-[200px] rounded-3xl overflow-hidden">
+            <div className="relative h-[300px] md:h-[200px] w-full md:w-[200px] lg:w-full xl:w-[200px] rounded-3xl overflow-hidden">
               <Image
                 src="/Cocina-Le-Chandelier-1.webp"
                 alt={t('images.chefAtWork')}

@@ -37,19 +37,111 @@ export async function generateMetadata({
   const { locale } = await params;
 
   const titles = {
-    en: "Le Chandelier — French-Swiss Restaurant in San José, Costa Rica",
-    es: "Le Chandelier — Restaurante Franco-Suizo en San José, Costa Rica"
+    en: "Le Chandelier — Premier French-Swiss Restaurant in San José, Costa Rica",
+    es: "Le Chandelier — Restaurante Franco-Suizo Premier en San José, Costa Rica"
   };
 
   const descriptions = {
-    en: "Le Chandelier illuminates Costa Rica with refined French-Swiss dining, masterfully crafted dishes, curated wines, and an ambiance of timeless elegance and warmth.",
-    es: "Le Chandelier ilumina Costa Rica con dining Franco-Suizo refinado, platos elaborados magistralmente, vinos curados y un ambiente de elegancia atemporal y calidez."
+    en: "Experience Le Chandelier, the premier French-Swiss restaurant in San José, Costa Rica. Masterfully crafted dishes, curated wines, and timeless elegance in the heart of Los Yoses. Reserve your table today.",
+    es: "Experimente Le Chandelier, el restaurante franco-suizo premier en San José, Costa Rica. Platos magistralmente elaborados, vinos curados y elegancia atemporal en el corazón de Los Yoses. Reserve su mesa hoy."
   };
+
+  const keywords = locale === 'es'
+    ? [
+      'restaurante Costa Rica',
+      'restaurante francés San José',
+      'restaurante fino Costa Rica',
+      'Le Chandelier',
+      'cocina francesa',
+      'cocina suiza',
+      'mejor restaurante San José',
+      'restaurante elegante Costa Rica',
+      'Los Yoses',
+      'gastronomía fina',
+    ]
+    : [
+      'restaurant Costa Rica',
+      'French restaurant San José',
+      'fine dining Costa Rica',
+      'Le Chandelier',
+      'French cuisine',
+      'Swiss cuisine',
+      'best restaurant San José',
+      'elegant restaurant Costa Rica',
+      'Los Yoses',
+      'gourmet dining',
+    ];
 
   return {
     metadataBase: new URL('https://www.lechandelier.restaurant'),
     title: titles[locale as keyof typeof titles] || titles.es,
     description: descriptions[locale as keyof typeof descriptions] || descriptions.es,
+    keywords: keywords.join(', '),
+    authors: [{ name: 'Le Chandelier Restaurant' }],
+    creator: 'Le Chandelier',
+    publisher: 'Le Chandelier Restaurant',
+
+    alternates: {
+      canonical: `https://www.lechandelier.restaurant/${locale}`,
+      languages: {
+        en: 'https://www.lechandelier.restaurant/en',
+        es: 'https://www.lechandelier.restaurant/es',
+      },
+    },
+
+    openGraph: {
+      type: 'website',
+      locale: locale === 'es' ? 'es_CR' : 'en_US',
+      alternateLocale: locale === 'es' ? 'en_US' : 'es_CR',
+      url: `https://www.lechandelier.restaurant/${locale}`,
+      title: titles[locale as keyof typeof titles] || titles.es,
+      description: descriptions[locale as keyof typeof descriptions] || descriptions.es,
+      siteName: 'Le Chandelier',
+      images: [
+        {
+          url: 'https://www.lechandelier.restaurant/restaurante-le-chandelier-1.webp',
+          width: 1200,
+          height: 630,
+          alt: 'Le Chandelier Restaurant - French-Swiss Fine Dining in Costa Rica',
+        },
+      ],
+      countryName: 'Costa Rica',
+    },
+
+    twitter: {
+      card: 'summary_large_image',
+      title: titles[locale as keyof typeof titles] || titles.es,
+      description: descriptions[locale as keyof typeof descriptions] || descriptions.es,
+      images: ['https://www.lechandelier.restaurant/restaurante-le-chandelier-1.webp'],
+      creator: '@lechandeliercr',
+      site: '@lechandeliercr',
+    },
+
+    other: {
+      'geo.region': 'CR-SJ',
+      'geo.placename': 'San José',
+      'geo.position': '9.9293391;-84.0589315',
+      'ICBM': '9.9293391, -84.0589315',
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+
+    applicationName: 'Le Chandelier Restaurant',
+
+    icons: {
+      icon: '/Chandelier.png',
+      apple: '/Chandelier.png',
+    },
   };
 }
 

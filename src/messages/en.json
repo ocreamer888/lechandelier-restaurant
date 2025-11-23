@@ -10,7 +10,7 @@
     "about": "About",
     "events": "Events",
     "contact": "Contact",
-    "bookTable": "Book a table"
+    "bookTable": "Book"
   },
   "awards": {
     "title": "Awards & Recognition",
@@ -55,13 +55,13 @@
   "contact": {
     "title": "Contact",
     "subtitle": "Book a table or get in touch with us.",
-    "openingHours": "OPENING HOURS",
-    "getInTouch": "GET IN TOUCH",
-    "address": "ADDRESS",
-    "phone": "PHONE",
-    "email": "EMAIL",
-    "follow": "FOLLOW",
-    "showRoute": "SHOW ROUTE",
+    "openingHours": "Opening Hours",
+    "getInTouch": "Get in Touch",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "follow": "Follow Us",
+    "showRoute": "Show Route",
     "mapView": "Map view",
     "diningRoomAlt": "Dining room at Le Chandelier",
     "days": {
@@ -124,7 +124,7 @@
       "loadError": "Failed to load reservation",
       "loading": "Loading reservation...",
       "additionalInfo": "If you have any questions about your reservation, please contact us directly.",
-      "contactInfo": "Phone: +506 7130 0911 | Email: hello@lechandelier.restaurant"
+      "contactInfo": "Phone: +506 7130 0911 | Email: reservaciones@lechandelier.restaurant"
     }
   },
   "about": {
