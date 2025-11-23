@@ -42,12 +42,28 @@
   "menu": {
     "title": "French Cuisine",
     "subtitle": "French-Swiss cuisine in the heart of Costa Rica.",
-    "imageAlt": "Duck à l'orange plated at Le Chandelier"
+    "imageAlt": "Duck à l'orange plated at Le Chandelier",
+    "categories": {
+      "starters": "Starters",
+      "mains": "Main Courses",
+      "desserts": "Desserts",
+      "drinks": "Drinks"
+    }
   },
   "drinks": {
     "title": "Drinks",
     "subtitle": "An exquisite selection of champagnes and fine wines from around the world.",
-    "imageAlt": "Pitcher of house sangria"
+    "imageAlt": "Pitcher of house sangria",
+    "featured": {
+      "title": "House Sangria",
+      "description": "Our signature sangria crafted with premium red wine, fresh seasonal fruits, and a touch of brandy. Perfect for sharing."
+    },
+    "categories": {
+      "champagne": "Champagne & Sparkling",
+      "whiteWines": "White Wines",
+      "redWines": "Red Wines",
+      "others": "Others"
+    }
   },
   "team": {
     "title": "Our team"

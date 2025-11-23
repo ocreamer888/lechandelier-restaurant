@@ -2,15 +2,17 @@ import Image from 'next/image';
 import SectionHeading from './SectionHeading';
 import DrinksMenuWrapper from './DrinksMenuWrapper';
 import { getFeaturedDrinks, urlFor } from '@/lib/sanity';
+import { getTranslations } from 'next-intl/server';
 
 export default async function DrinksSectionWrapper() {
+  const t = await getTranslations('drinks');
   const featuredDrinks = await getFeaturedDrinks();
 
   const featured = featuredDrinks?.[0];
-  const drinkTitle = featured?.title || 'House Sangria';
+  const drinkTitle = featured?.title || t('featured.title');
   const drinkDescription =
     featured?.description ||
-    'Our signature sangria crafted with premium red wine, fresh seasonal fruits, and a touch of brandy. Perfect for sharing.';
+    t('featured.description');
   const drinkImage = featured?.image ? urlFor(featured.image).width(1200).url() : '/sangria-le-chandelier-2.png';
 
   return (
@@ -18,8 +20,8 @@ export default async function DrinksSectionWrapper() {
       <div className="container grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         <div>
           <SectionHeading
-            title="Drinks"
-            subtitle="An exquisite selection of champagnes and fine wines from around the world."
+            title={t('title')}
+            subtitle={t('subtitle')}
           />
 
           <DrinksMenuWrapper />
@@ -27,7 +29,7 @@ export default async function DrinksSectionWrapper() {
 
         <div className="grid gap-4 items-center justify-center">
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10">
-            
+
             <Image
               src={drinkImage}
               alt={drinkTitle}
@@ -44,4 +46,5 @@ export default async function DrinksSectionWrapper() {
     </section>
   );
 }
+
 

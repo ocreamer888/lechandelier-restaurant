@@ -19,11 +19,11 @@ export const SITE_CONFIG = {
     social: {
         facebook: 'https://facebook.com/lechandeliercr',
         instagram: 'https://instagram.com/lechandeliercr',
-        twitter: 'https://twitter.com/lechandeliercr',
+        twitter: 'https://x.com/lechandeliercr',
     },
     contact: {
         phone: '+506 7130 0911',
-        email: 'hello@lechandelier.restaurant',
+        email: 'reservaciones@lechandelier.restaurant',
     },
 } as const;
 

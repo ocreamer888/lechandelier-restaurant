@@ -28,13 +28,13 @@ export function generateRestaurantSchema({
   const contact = settings?.contact || {
     address: 'Los Yoses, San Jose, Costa Rica',
     phone: '+506 7130 0911',
-    email: 'hello@lechandelier.restaurant',
+    email: 'reservaciones@lechandelier.restaurant',
   };
 
   const socialLinks = settings?.socialLinks || {
     facebook: 'https://facebook.com/lechandeliercr',
     instagram: 'https://instagram.com/lechandeliercr',
-    twitter: 'https://twitter.com/lechandeliercr',
+    twitter: 'https://x.com/lechandeliercr',
   };
 
   const openingHours = settings?.openingHours || [
@@ -203,7 +203,7 @@ export function generateOrganizationSchema(settings?: SiteSettings | null) {
   const socialLinks = settings?.socialLinks || {
     facebook: 'https://facebook.com/lechandeliercr',
     instagram: 'https://instagram.com/lechandeliercr',
-    twitter: 'https://twitter.com/lechandeliercr',
+    twitter: 'https://x.com/lechandeliercr',
   };
 
   return {

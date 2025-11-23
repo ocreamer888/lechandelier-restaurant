@@ -15,11 +15,11 @@ type Item = {
 };
 
 interface BarrelStyle {
-    opacity: number;
-    scale: number;
-    rotateY: number;
-    isCentered?: boolean;
-  }
+  opacity: number;
+  scale: number;
+  rotateY: number;
+  isCentered?: boolean;
+}
 
 // Fallback data
 const FALLBACK_DATA: Record<Category, SubCategory[]> = {
@@ -135,176 +135,179 @@ function SectionOrnament({ text }: { text: string }) {
   );
 }
 
-function SubCategoryBarrel({ 
-    subcategories, 
-    activeIndex, 
-    onSubCategoryChange 
-  }: { 
-    subcategories: SubCategory[]; 
-    activeIndex: number;
-    onSubCategoryChange: (index: number) => void;
-  }) {
-    const [isScrolling, setIsScrolling] = useState(false);
-    const [, forceUpdate] = useState(0);
-    const scrollRef = useRef<HTMLDivElement>(null);
-    const scrollTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
-    const itemWidth = 180;
-  
-    // Initialize scroll position on mount and when activeIndex changes
-    useEffect(() => {
-      if (scrollRef.current) {
-        const targetScroll = activeIndex * itemWidth;
-        scrollRef.current.scrollLeft = targetScroll;
-        // Small delay to ensure DOM is ready, then force re-render
-        setTimeout(() => {
-          forceUpdate(prev => prev + 1);
-        }, 50);
-      }
-    }, [activeIndex, itemWidth]);
-  
-    const getItemStyle = useCallback(
-        (container: HTMLDivElement | null, index: number): BarrelStyle => {
-          if (!container) return { opacity: 1, scale: 1.2, rotateY: 0, isCentered: false };
-      
-          const scrollLeft = container.scrollLeft;
-          const paddingWidth = container.clientWidth / 2 - itemWidth / 2; // Calculate actual padding
-          const itemOffset = paddingWidth + (index * itemWidth); // ← ADD PADDING HERE
-          const centerOffset = scrollLeft + container.clientWidth / 2 - itemWidth / 2;
-          const distance = Math.abs(itemOffset - centerOffset);
-          const maxDistance = itemWidth * 1.5;
-  
-        const normalizedDistance = Math.min(distance / maxDistance, 1);
-        
-        // Increase threshold to 30px for better detection
-        const isCentered = distance < 30;
-        
-        // Full opacity for centered item, minimum 0.2 for others
-        const opacity = isCentered ? 1.0 : Math.max(1 - normalizedDistance * 0.8, 0.2);
-        
-        // Larger scale for centered item
-        const scale = isCentered ? 1.15 : Math.max(1.0 - normalizedDistance * 0.2, 0.8);
-        
-        // 3D rotation effect
-        const rotateY = ((itemOffset - centerOffset) / itemWidth) * 15;
-  
-        return {
-          opacity,
-          scale,
-          rotateY: Math.max(Math.min(rotateY, 20), -20),
-          isCentered,
-        };
-      },
-      [itemWidth]
-    );
-  
-    const handleScroll = useCallback(
-      (e: React.UIEvent<HTMLDivElement>) => {
-        const container = e.currentTarget;
-        setIsScrolling(true);
-        forceUpdate(prev => prev + 1); // Force re-render to update styles
-  
-        if (scrollTimeoutRef.current) {
-          clearTimeout(scrollTimeoutRef.current);
-        }
-  
-        scrollTimeoutRef.current = setTimeout(() => {
-          const scrollLeft = container.scrollLeft;
-          const index = Math.round(scrollLeft / itemWidth);
-          const clampedIndex = Math.max(0, Math.min(index, subcategories.length - 1));
-  
-          container.scrollTo({
-            left: clampedIndex * itemWidth,
-            behavior: "smooth",
-          });
-  
-          onSubCategoryChange(clampedIndex);
-          setIsScrolling(false);
-        }, 100);
-      },
-      [subcategories.length, onSubCategoryChange, itemWidth]
-    );
-  
-    const handleItemClick = useCallback(
-      (index: number) => {
-        if (scrollRef.current) {
-          const targetScroll = index * itemWidth;
-          scrollRef.current.scrollTo({
-            left: targetScroll,
-            behavior: "smooth",
-          });
-          onSubCategoryChange(index);
-        }
-      },
-      [onSubCategoryChange, itemWidth]
-    );
-  
-    // Only show barrel if there are multiple subcategories
-    if (subcategories.length <= 1) return null;
-  
-    return (
-      <div className="relative w-full max-w-2xl mx-auto mb-12 bg-transparent border border-white/20 rounded-full overflow-hidden">
-  
-        <div className="relative h-14" style={{ perspective: "1200px" }}>
-  
-          {/* Scrollable content */}
-          <div
-            ref={scrollRef}
-            onScroll={handleScroll}
-            className="h-full overflow-x-scroll scrollbar-hide flex items-center"
-            style={{
-              scrollSnapType: "x mandatory",
-              WebkitOverflowScrolling: "touch",
-            }}
-          >
-            {/* Left padding to center first item */}
-            <div style={{ width: "calc(50% - 90px)", minWidth: "120px" }} className="flex-shrink-0" />
-            
-            {subcategories.map((sub, index) => {
-  const style = getItemStyle(scrollRef.current, index);
-  const isCentered = index === activeIndex;  
-  return (
-    <button
-      key={index}
-      onClick={() => handleItemClick(index)}
-      className="flex-shrink-0 flex items-center justify-center text-white/40 text-lg font-light select-none px-4 cursor-pointer transition-colors duration-200"
-      style={{
-        width: `${itemWidth}px`,
-        scrollSnapAlign: "center",
-        opacity: style.opacity,
-        transform: `scale(${style.scale}) rotateY(${style.rotateY}deg)`,
-        transition: isScrolling
-          ? "opacity 0.15s ease-out, transform 0.15s ease-out"
-          : "opacity 0.3s ease-out, transform 0.3s ease-out",
-        transformStyle: "preserve-3d",
-      }}
-      aria-pressed={isCentered}
-    >
-      <span className={`transition-colors duration-200 ${isCentered ? 'text-pink-100 font-medium' : 'hover:text-pink-100/80'}`}>
-        {sub.name}
-      </span>
-    </button>
+function SubCategoryBarrel({
+  subcategories,
+  activeIndex,
+  onSubCategoryChange
+}: {
+  subcategories: SubCategory[];
+  activeIndex: number;
+  onSubCategoryChange: (index: number) => void;
+}) {
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [, forceUpdate] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const itemWidth = 180;
+
+  // Initialize scroll position on mount and when activeIndex changes
+  useEffect(() => {
+    if (scrollRef.current) {
+      const targetScroll = activeIndex * itemWidth;
+      scrollRef.current.scrollLeft = targetScroll;
+      // Small delay to ensure DOM is ready, then force re-render
+      setTimeout(() => {
+        forceUpdate(prev => prev + 1);
+      }, 50);
+    }
+  }, [activeIndex, itemWidth]);
+
+  const getItemStyle = useCallback(
+    (container: HTMLDivElement | null, index: number): BarrelStyle => {
+      if (!container) return { opacity: 1, scale: 1.2, rotateY: 0, isCentered: false };
+
+      const scrollLeft = container.scrollLeft;
+      const paddingWidth = container.clientWidth / 2 - itemWidth / 2; // Calculate actual padding
+      const itemOffset = paddingWidth + (index * itemWidth); // ← ADD PADDING HERE
+      const centerOffset = scrollLeft + container.clientWidth / 2 - itemWidth / 2;
+      const distance = Math.abs(itemOffset - centerOffset);
+      const maxDistance = itemWidth * 1.5;
+
+      const normalizedDistance = Math.min(distance / maxDistance, 1);
+
+      // Increase threshold to 30px for better detection
+      const isCentered = distance < 30;
+
+      // Full opacity for centered item, minimum 0.2 for others
+      const opacity = isCentered ? 1.0 : Math.max(1 - normalizedDistance * 0.8, 0.2);
+
+      // Larger scale for centered item
+      const scale = isCentered ? 1.15 : Math.max(1.0 - normalizedDistance * 0.2, 0.8);
+
+      // 3D rotation effect
+      const rotateY = ((itemOffset - centerOffset) / itemWidth) * 15;
+
+      return {
+        opacity,
+        scale,
+        rotateY: Math.max(Math.min(rotateY, 20), -20),
+        isCentered,
+      };
+    },
+    [itemWidth]
   );
-})}
-            
-            {/* Right padding to center last item */}
-            <div style={{ width: "calc(50% - 90px)", minWidth: "120px" }} className="flex-shrink-0" />
-          </div>
+
+  const handleScroll = useCallback(
+    (e: React.UIEvent<HTMLDivElement>) => {
+      const container = e.currentTarget;
+      setIsScrolling(true);
+      forceUpdate(prev => prev + 1); // Force re-render to update styles
+
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      scrollTimeoutRef.current = setTimeout(() => {
+        const scrollLeft = container.scrollLeft;
+        const index = Math.round(scrollLeft / itemWidth);
+        const clampedIndex = Math.max(0, Math.min(index, subcategories.length - 1));
+
+        container.scrollTo({
+          left: clampedIndex * itemWidth,
+          behavior: "smooth",
+        });
+
+        onSubCategoryChange(clampedIndex);
+        setIsScrolling(false);
+      }, 100);
+    },
+    [subcategories.length, onSubCategoryChange, itemWidth]
+  );
+
+  const handleItemClick = useCallback(
+    (index: number) => {
+      if (scrollRef.current) {
+        const targetScroll = index * itemWidth;
+        scrollRef.current.scrollTo({
+          left: targetScroll,
+          behavior: "smooth",
+        });
+        onSubCategoryChange(index);
+      }
+    },
+    [onSubCategoryChange, itemWidth]
+  );
+
+  // Only show barrel if there are multiple subcategories
+  if (subcategories.length <= 1) return null;
+
+  return (
+    <div className="relative w-full max-w-2xl mx-auto mb-12 bg-transparent border border-white/20 rounded-full overflow-hidden">
+
+      <div className="relative h-14" style={{ perspective: "1200px" }}>
+
+        {/* Scrollable content */}
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="h-full overflow-x-scroll scrollbar-hide flex items-center"
+          style={{
+            scrollSnapType: "x mandatory",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
+          {/* Left padding to center first item */}
+          <div style={{ width: "calc(50% - 90px)", minWidth: "120px" }} className="flex-shrink-0" />
+
+          {subcategories.map((sub, index) => {
+            const style = getItemStyle(scrollRef.current, index);
+            const isCentered = index === activeIndex;
+            return (
+              <button
+                key={index}
+                onClick={() => handleItemClick(index)}
+                className="flex-shrink-0 flex items-center justify-center text-white/40 text-lg font-light select-none px-4 cursor-pointer transition-colors duration-200"
+                style={{
+                  width: `${itemWidth}px`,
+                  scrollSnapAlign: "center",
+                  opacity: style.opacity,
+                  transform: `scale(${style.scale}) rotateY(${style.rotateY}deg)`,
+                  transition: isScrolling
+                    ? "opacity 0.15s ease-out, transform 0.15s ease-out"
+                    : "opacity 0.3s ease-out, transform 0.3s ease-out",
+                  transformStyle: "preserve-3d",
+                }}
+                aria-pressed={isCentered}
+              >
+                <span className={`transition-colors duration-200 ${isCentered ? 'text-pink-100 font-medium' : 'hover:text-pink-100/80'}`}>
+                  {sub.name}
+                </span>
+              </button>
+            );
+          })}
+
+          {/* Right padding to center last item */}
+          <div style={{ width: "calc(50% - 90px)", minWidth: "120px" }} className="flex-shrink-0" />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
 type DrinksMenuProps = {
   data?: Record<Category, SubCategory[]>;
 };
 
+import { useTranslations } from "next-intl";
+
 export default function DrinksMenu({ data }: DrinksMenuProps) {
+  const t = useTranslations('drinks.categories');
   const [activeCategory, setActiveCategory] = useState<Category>("Champagne & Sparkling");
   const [activeSubIndex, setActiveSubIndex] = useState(0);
-  
+
   // Use provided data or fallback to hardcoded data
   const menuData = data || FALLBACK_DATA;
-  
+
   const subcategories = useMemo(() => menuData[activeCategory] ?? [], [activeCategory, menuData]);
   const currentItems = useMemo(() => {
     const items = subcategories[activeSubIndex]?.items ?? [];
@@ -318,6 +321,16 @@ export default function DrinksMenu({ data }: DrinksMenuProps) {
   const handleCategoryChange = (category: Category) => {
     setActiveCategory(category);
     setActiveSubIndex(0); // Reset to first subcategory when category changes
+  };
+
+  const getCategoryLabel = (cat: Category) => {
+    switch (cat) {
+      case "Champagne & Sparkling": return t('champagne');
+      case "White Wines": return t('whiteWines');
+      case "Red Wines": return t('redWines');
+      case "Others": return t('others');
+      default: return cat;
+    }
   };
 
   return (
@@ -334,24 +347,23 @@ export default function DrinksMenu({ data }: DrinksMenuProps) {
                 <button
                   key={c}
                   onClick={() => handleCategoryChange(c)}
-                  className={`flex-shrink-0 snap-center rounded-full border px-12 py-2 text-sm transition ${
-                    activeCategory === c
+                  className={`flex-shrink-0 snap-center rounded-full border px-12 py-2 text-sm transition ${activeCategory === c
                       ? "border-white/20 bg-pink-200/40 text-white"
                       : "border-white/10 bg-pink-200/10 text-white/80 hover:bg-pink-200/20"
-                  }`}
+                    }`}
                   aria-pressed={activeCategory === c}
                 >
-                  {c.toUpperCase()}
+                  {getCategoryLabel(c).toUpperCase()}
                 </button>
               ))}
             </div>
           </div>
         </div>
 
-        <SectionOrnament text={activeCategory} />
+        <SectionOrnament text={getCategoryLabel(activeCategory)} />
 
         {/* Horizontal Barrel SubCategory Picker */}
-        <SubCategoryBarrel 
+        <SubCategoryBarrel
           subcategories={subcategories}
           activeIndex={activeSubIndex}
           onSubCategoryChange={setActiveSubIndex}

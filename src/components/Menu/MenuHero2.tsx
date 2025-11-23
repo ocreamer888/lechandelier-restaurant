@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import NavBar2 from "../NavBar2";
+import { useTranslations } from "next-intl";
 
 function Card({
   href,
@@ -32,6 +33,8 @@ function Card({
 }
 
 export default function MenuHero2() {
+  const t = useTranslations();
+
   return (
     <section className="relative min-h-screen">
       <div className="grid h-auto min-h-screen grid-cols-1 gap-4 p-2 md:p-4 lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_600px]">
@@ -49,10 +52,10 @@ export default function MenuHero2() {
           <div className="absolute inset-0 bg-black/20" />
           <div className="relative flex flex-col w-full h-full items-center justify-center lg:items-start lg:justify-end p-6 md:p-10">
             <h1 className="pointer-events-none font-script max-w-[16ch] text-center lg:text-left [text-wrap:balance] text-8xl">
-              Menu
+              {t('navigation.menu')}
             </h1>
             <p className="pointer-events-none text-white/90 text-lg tracking-tight">
-              French-Swiss cuisine in the heart of Costa Rica.
+              {t('menu.subtitle')}
             </p>
 
           </div>
@@ -61,19 +64,20 @@ export default function MenuHero2() {
         {/* Right: content sections */}
         <div className="hidden lg:grid grid-cols-2 flex flex-grow gap-4">
           <div className="flex flex-grow relative min-w-[100px] max-w-[300px] h-[28vh] min-h-[180px] lg:h-auto">
-            <Card href="entradas" label="Entradas" src="/entrada-le-chandelier-1.png" alt="Explore our menu" />
+            <Card href="entradas" label={t('menu.categories.starters')} src="/entrada-le-chandelier-1.png" alt="Explore our menu" />
           </div>
           <div className="flex flex-grow relative min-w-[100px] max-w-[300px] h-[24vh] min-h-[160px] lg:h-auto">
-            <Card href="platos-fuertes" label="Platos Fuertes" src="/pato-a-la-naranja-le-chandelier-1.png" alt="Book a table" />
+            <Card href="platos-fuertes" label={t('menu.categories.mains')} src="/pato-a-la-naranja-le-chandelier-1.png" alt="Book a table" />
           </div>
           <div className="flex flex-grow relative min-w-[100px] max-w-[300px] h-[24vh] min-h-[160px] lg:h-auto">
-            <Card href="postres" label="Postres" src="/postre-le-chandelier-1.png" alt="About our restaurant" />
+            <Card href="postres" label={t('menu.categories.desserts')} src="/postre-le-chandelier-1.png" alt="About our restaurant" />
           </div>
           <div className="flex flex-grow relative min-w-[100px] max-w-[300px] h-[24vh] min-h-[160px] lg:h-auto">
-            <Card href="bebidas" label="Bebidas" src="/sangria-le-chandelier-3.png" alt="About our restaurant" />
+            <Card href="bebidas" label={t('menu.categories.drinks')} src="/sangria-le-chandelier-3.png" alt="About our restaurant" />
           </div>
         </div>
       </div>
     </section>
   );
 }
+

@@ -42,12 +42,28 @@
   "menu": {
     "title": "Cocina Francesa",
     "subtitle": "Cocina franco-suiza en el corazón de Costa Rica.",
-    "imageAlt": "Pato a la naranja emplatado en Le Chandelier"
+    "imageAlt": "Pato a la naranja emplatado en Le Chandelier",
+    "categories": {
+      "starters": "Entradas",
+      "mains": "Platos Fuertes",
+      "desserts": "Postres",
+      "drinks": "Bebidas"
+    }
   },
   "drinks": {
     "title": "Bebidas",
     "subtitle": "Una exquisita selección de champañas y vinos finos de todo el mundo.",
-    "imageAlt": "Jarra de sangría de la casa"
+    "imageAlt": "Jarra de sangría de la casa",
+    "featured": {
+      "title": "Sangría de la Casa",
+      "description": "Nuestra sangría insignia elaborada con vino tinto premium, frutas de temporada frescas y un toque de brandy. Perfecta para compartir."
+    },
+    "categories": {
+      "champagne": "Champaña y Espumosos",
+      "whiteWines": "Vinos Blancos",
+      "redWines": "Vinos Tintos",
+      "others": "Otros"
+    }
   },
   "team": {
     "title": "Nuestro equipo"
