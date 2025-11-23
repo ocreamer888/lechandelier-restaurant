@@ -29,7 +29,6 @@ export async function POST(request: NextRequest) {
     }
 
     const body: ReservationFormData = await request.json();
-    console.log('📝 Received reservation request:', { ...body, email: '***', phone: '***' });
 
     // Validate the form data
     const validation = validateReservationForm(body);
@@ -50,12 +49,12 @@ export async function POST(request: NextRequest) {
       // Parse date and time components separately
       const [year, month, day] = dateString.split('-').map(Number);
       const [hours, minutes] = timeString.split(':').map(Number);
-      
+
       // Create date in local timezone (server's timezone)
       const reservationDateTime = new Date(year, month - 1, day, hours, minutes, 0, 0);
       const now = new Date();
       const minimumTime = new Date(now.getTime() + 15 * 60 * 1000);
-      
+
       return !isNaN(reservationDateTime.getTime()) && reservationDateTime >= minimumTime;
     };
 
@@ -73,7 +72,6 @@ export async function POST(request: NextRequest) {
 
     // Get server-side Supabase client
     const supabase = getServerSupabase();
-    console.log('✅ Supabase client created');
 
     // Insert reservation into database
     const insertData: ReservationInsert = {

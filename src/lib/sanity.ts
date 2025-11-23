@@ -191,7 +191,6 @@ export async function getTeamMembers(): Promise<TeamMember[]> {
         next: { revalidate: process.env.NODE_ENV === 'production' ? 3600 : 0 },
       }
     );
-    console.log('getTeamMembers - Fetched:', data.length, 'members');
     return data;
   } catch (error) {
     console.error('Error fetching team members:', error);
